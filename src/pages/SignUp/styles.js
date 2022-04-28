@@ -34,6 +34,17 @@ export const InputsContainer = styled.div`
 
     form > button{
         background-color: var(--green);
+        margin: 0.5em;
+    }
+
+    .MuiFormControl-marginNormal{
+        margin: 0.5em;
+    }
+
+    label{
+       transform: translate(14px, -6px) scale(0.75);
+       transition: color 200ms;
+       background-color: var(--white);
     }
 `
 
