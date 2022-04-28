@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { goToLogin } from './routes/coordinator';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import {
+  InitialContainer 
+} from './styles';
+
+const App = () => {
+  const navegate = useNavigate();
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      goToLogin(navegate)
+    },3000)
+  },[])
+
+  return (<InitialContainer className='main-container'>
+    <div className='main'>
+      <h3>Future</h3>
+      <span>Eats</span>
     </div>
-  );
+    </InitialContainer>);
 }
 
 export default App;
