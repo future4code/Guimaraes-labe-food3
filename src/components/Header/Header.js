@@ -4,8 +4,8 @@ import {
     HeaderContainer
 } from './styles'
 
-const Header = () => {
-    return(<HeaderContainer className='main-container'>
+const Header = ({ heigth }) => {
+    return(<HeaderContainer className='main-container' heigth={heigth}>
     <div className='main'>
      
      <div className="main-title">

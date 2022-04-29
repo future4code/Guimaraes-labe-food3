@@ -4,13 +4,13 @@ export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 3em;
+    height: 2em;
 
     justify-content: center;
     align-items: center;
 
     font-size: 3em;
-    margin-top: 1em;
+    margin-top: ${props => props.heigth? props.heigth : '0.5em' };
 
     h3{
         color: var(--black);

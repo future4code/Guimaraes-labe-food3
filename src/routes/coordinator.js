@@ -3,6 +3,5 @@ export const goToLogin = (navegate) => {
 }
 
 export const goToSignUp = (navegate) =>{
-    console.log("goToSignUp")
     navegate("/signup");
 }

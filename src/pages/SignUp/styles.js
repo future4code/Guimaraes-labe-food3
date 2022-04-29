@@ -26,6 +26,8 @@ export const InputsContainer = styled.div`
     h3{
         color: var(--black);
         font-weight: normal;
+        margin-bottom: 0.8em;
+        margin-top: 0.8em;
     }
 
     input:hover{
@@ -34,6 +36,19 @@ export const InputsContainer = styled.div`
 
     form > button{
         background-color: var(--green);
+        margin: 0.5em;
+    }
+
+    .MuiFormControl-marginNormal{
+        margin: 0.5em;
+    }
+
+    label{
+       transform: translate(14px, -6px) scale(0.75);
+       transition: color 200ms;
+       padding: 0 0.5em;
+       text-align: start;
+       background-color: var(--white);
     }
 `
 
