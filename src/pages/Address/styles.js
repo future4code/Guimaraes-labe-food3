@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const AddressContainer = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
@@ -26,8 +26,8 @@ export const InputsContainer = styled.div`
     h3{
         color: var(--black);
         font-weight: normal;
-        margin-bottom: 0.8em;
         margin-top: 0.8em;
+        margin-bottom: 0.8em;
     }
 
     input:hover{
@@ -36,15 +36,18 @@ export const InputsContainer = styled.div`
 
     form > button{
         background-color: var(--green);
+        margin: 0.5em;
     }
-`
 
-export const SignUpButtonContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-    max-width: 450px;
+    .MuiFormControl-marginNormal{
+        margin: 0.5em;
+    }
 
-    align-items: center;
-    margin-bottom: 20px;
+    label{
+       transform: translate(14px, -6px) scale(0.75);
+       transition: color 200ms;
+       padding: 0 0.5em;
+       text-align: start;
+       background-color: var(--white);
+    }
 `
