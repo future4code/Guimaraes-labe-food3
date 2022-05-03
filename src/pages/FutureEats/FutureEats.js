@@ -2,8 +2,14 @@ import React from "react"
 
 import Card from "../../components/Card/Card"
 import Filtro from "../../components/Filtro/Filtro"
+import Search from "../../components/Search/Search"
 
-import { FutureEatsCardContainer, FutureEatsHeader, FutureEatsContainer } from './styles'
+import { 
+        FutureEatsCardContainer, 
+        FutureEatsHeader, 
+        FutureEatsContainer, 
+        FutureEatsSearch 
+} from './styles'
 
 const FutureEats = () => {
     return(<>
@@ -11,6 +17,10 @@ const FutureEats = () => {
             <h5 className="futureeats-header">FutureEats</h5>
         </FutureEatsHeader>
         
+        <FutureEatsSearch>
+            <Search />
+        </FutureEatsSearch>
+       
         <FutureEatsContainer>
             <Filtro />
         </FutureEatsContainer>

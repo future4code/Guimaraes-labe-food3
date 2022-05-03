@@ -46,3 +46,17 @@ export const FutureEatsContainer = styled.div`
     width: 100%;
     
 `;
+
+export const FutureEatsSearch = styled.div`
+    display: flex;
+
+    justify-content: center;
+
+    .search{
+        width: 20.5rem;
+        height: 3.5rem;
+        border-radius: 2px;
+        margin-top: 10px;
+        border: solid 1px var(--greyish);
+    }
+`;
