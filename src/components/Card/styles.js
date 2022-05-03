@@ -6,10 +6,7 @@ export const CardContainer = styled.div`
     align-items: center;
     width: 360px;
     height: 196px;
-    margin: 50px 0 0;
-    padding: 8px 16px 0;
-    
-    /* border: 1px solid black; */
+    padding: 0 0 16px;
 
     .image{
         width: 328px;

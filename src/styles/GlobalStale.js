@@ -15,9 +15,19 @@ const GlobalStyle = createGlobalStyle`
     }
 
     :root {
+        //colors
         --green: #5CB646;
         --black: #000000;
         --white: white;
+        --blue: blue;
+        --grey: grey;
+        --black-25: rgba(0, 0, 0, 0.25);
+
+
+        //fontes
+        --font-roboto: Roboto;
+        --font-size: 16px;
+
     }
 `
 
