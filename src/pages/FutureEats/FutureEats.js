@@ -3,14 +3,18 @@ import React from "react"
 import Card from "../../components/Card/Card"
 import Filtro from "../../components/Filtro/Filtro"
 
-import { FutureEatsCardContainer, FutureEatsContainer } from './styles'
+import { FutureEatsCardContainer, FutureEatsHeader, FutureEatsContainer } from './styles'
 
 const FutureEats = () => {
     return(<>
-        <FutureEatsContainer>
+        <FutureEatsHeader>
             <h5 className="futureeats-header">FutureEats</h5>
-        </FutureEatsContainer>      
-        <Filtro />
+        </FutureEatsHeader>
+        
+        <FutureEatsContainer>
+            <Filtro />
+        </FutureEatsContainer>
+        
         <FutureEatsCardContainer>
             <Card />
             <Card />

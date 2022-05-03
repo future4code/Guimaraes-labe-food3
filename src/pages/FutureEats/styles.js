@@ -22,7 +22,7 @@ export const FutureEatsCardContainer = styled.div`
     }
 `;
 
-export const FutureEatsContainer = styled.div`
+export const FutureEatsHeader = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
@@ -36,4 +36,13 @@ export const FutureEatsContainer = styled.div`
     .futureeats-header{
 
     }
+`;
+
+export const FutureEatsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    
 `;
