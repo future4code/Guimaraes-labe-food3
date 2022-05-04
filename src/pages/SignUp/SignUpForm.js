@@ -2,8 +2,12 @@ import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
+import { signup } from "../../Services/auth"
+import { useNavigate} from 'react-router-dom'
 
 const SignUpForm = () => {
+    const navegate = useNavigate();
+
     const [form, onChange, clear] = useForm({
         name: "", 
         email: "", 
@@ -14,10 +18,26 @@ const SignUpForm = () => {
 
     const [text,setText] = useState('');
 
-    const onSubmitForm = (event) =>{
-        console.log("event", event)
+    const onSubmitForm = async (event) =>{
         event.preventDefault();
+
+        let user = {
+            name: form.name,
+            email: form.email,
+            cpf: form.cpf,
+            password: form.password
+        }
+
+        let retorno = await signup(user);
+
+        if (retorno.data.status === 200) {
+            localStorage.setItem('token', retorno.data.token)
+            navegate('/futureeats');
+        }
+
     }
+
+
 
     return(<InputsContainer>
         <form onSubmit={onSubmitForm}>
@@ -26,8 +46,8 @@ const SignUpForm = () => {
             <TextField
                 type="text"
                 name="name"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
+                value={form.name}
+                onChange={onChange}
                 label="Nome"
                 variant="outlined"
                 fullWidth
