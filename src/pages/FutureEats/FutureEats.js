@@ -2,13 +2,15 @@ import React from "react"
 
 import Card from "../../components/Card/Card"
 import Filtro from "../../components/Filtro/Filtro"
+import Footer from "../../components/Footer/Footer"
 import Search from "../../components/Search/Search"
 
 import { 
         FutureEatsCardContainer, 
         FutureEatsHeader, 
         FutureEatsContainer, 
-        FutureEatsSearch 
+        FutureEatsSearch,
+        FutureEatsFooter
 } from './styles'
 
 const FutureEats = () => {
@@ -31,6 +33,11 @@ const FutureEats = () => {
             <Card />
             <Card />
         </FutureEatsCardContainer>
+        <FutureEatsFooter>
+            <Footer />
+        </FutureEatsFooter>
+
+        
     </>
     )
 }
