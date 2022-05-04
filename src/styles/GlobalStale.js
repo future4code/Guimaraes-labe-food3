@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         --blue: blue;
         --grey: grey;
         --black-25: rgba(0, 0, 0, 0.25);
+        --greyish: #b8b8b8;
 
 
         //fontes

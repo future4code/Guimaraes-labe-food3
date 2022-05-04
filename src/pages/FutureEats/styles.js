@@ -60,3 +60,10 @@ export const FutureEatsSearch = styled.div`
         border: solid 1px var(--greyish);
     }
 `;
+
+export const FutureEatsFooter = styled.div`
+    display: flex;
+
+    
+    justify-content: center;
+`;
