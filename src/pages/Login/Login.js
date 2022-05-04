@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from  'react-router-dom'
-import { Button, TextField } from "@material-ui/core";
+import { useNavigate} from 'react-router-dom'
+import { Button } from "@material-ui/core";
 import Header from "../../components/Header/Header";
 
 import {
@@ -9,11 +9,9 @@ import {
 } from './styles'
 import { goToSignUp } from "../../routes/coordinator";
 import LoginForm from "./LoginForm";
-import Arrow from "../../components/Arrow/Arrow";
 
 const Login = () => {
     const navegate = useNavigate();
-
     return(
         <LoginContainer className="login-container">
             <Header heigth={'3em'} />            

@@ -8,6 +8,8 @@ export const FooterContainer = styled.div`
     border-top: 1px solid var(--greyish);
 
     justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
 
     .MuiSvgIcon-root{
         width: 7.5rem;
