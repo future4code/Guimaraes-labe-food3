@@ -6,7 +6,7 @@ const useForm = ( inicialState ) => {
 
     //seta o valor do input
     const handleInputChange = (event) => {
-        const {value, name } = event.targert;
+        const {value, name } = event.target;
         setForm({...form, [name]: value });
     }
 
