@@ -35,7 +35,7 @@ export const InputsContainer = styled.div`
     }
 
     form > button{
-        background-color: var(--red);
+        background-color: var(--green);
         margin: 0.5em;
     }
 

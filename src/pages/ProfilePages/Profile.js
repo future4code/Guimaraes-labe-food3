@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
                 <EditAdress> <EditIco /></EditAdress>
             </Endereco>
             <Historico>
-                <HistoricoH1>Histórico de pedidos</HistoricoH1>
+                <HistoricoH1>Hustórico de pedidos</HistoricoH1>
             </Historico>
                 <ContainerPedidos>
                     <div>
