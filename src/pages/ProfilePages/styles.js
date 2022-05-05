@@ -1,19 +1,6 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-`
-
 export const InputsContainer = styled.div`
-    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     width: 80vw;
@@ -36,16 +23,21 @@ export const InputsContainer = styled.div`
     }
 
     form > button{
-        background-color: var(--red);
+        color: var(--Lipstick);
+        background-color: var(--Lipstick);
     }
 `
-
-export const SignUpButtonContainer = styled.div`
+export const Geral = styled.div`
     display: flex;
     flex-direction: column;
     width: 80vw;
     max-width: 450px;
-
-    align-items: center;
-    margin-bottom: 20px;
+    margin: 0 auto;
+`
+export const Perfil = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    max-width: 450px;
+    margin-top: -10vh;
 `
