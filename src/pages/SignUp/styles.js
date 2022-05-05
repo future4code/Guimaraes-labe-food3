@@ -5,9 +5,11 @@ export const LoginContainer = styled.div`
     width: 100%;
     height: 100%;
     margin: 0 auto;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 `
 
 export const InputsContainer = styled.div`
@@ -15,6 +17,7 @@ export const InputsContainer = styled.div`
     flex-direction: column;
     width: 80vw;
     max-width: 450px;
+
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -32,7 +35,7 @@ export const InputsContainer = styled.div`
     }
 
     form > button{
-        background-color: var(--red);
+        background-color: var(--green);
         margin: 0.5em;
     }
 

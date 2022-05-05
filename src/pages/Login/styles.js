@@ -13,7 +13,6 @@ export const LoginContainer = styled.div`
 `
 
 export const InputsContainer = styled.div`
-    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     width: 80vw;
@@ -36,7 +35,7 @@ export const InputsContainer = styled.div`
     }
 
     form > button{
-        background-color: var(--red);
+        background-color: var(--green);
     }
 `
 
