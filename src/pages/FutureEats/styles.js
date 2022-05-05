@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const FourFoodCardContainer = styled.div`
+export const FutureEatsCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@ export const FourFoodCardContainer = styled.div`
     ::-webkit-scrollbar {
         display: none;
     }
-    .FourFood-header{
+    .futureeats-header{
         border-bottom: 1px solid var(--grey);
         width: 100%;
         height: 44px;
@@ -22,7 +22,7 @@ export const FourFoodCardContainer = styled.div`
     }
 `;
 
-export const FourFoodHeader = styled.div`
+export const FutureEatsHeader = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
@@ -33,12 +33,12 @@ export const FourFoodHeader = styled.div`
     box-shadow: 0 0.5px 0 0 var(--black-25);
     background-color: #fff;
 
-    .FourFood-header{
+    .futureeats-header{
 
     }
 `;
 
-export const FourFoodContainer = styled.div`
+export const FutureEatsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +47,7 @@ export const FourFoodContainer = styled.div`
     
 `;
 
-export const FourFoodSearch = styled.div`
+export const FutureEatsSearch = styled.div`
     display: flex;
 
     justify-content: center;
@@ -61,7 +61,7 @@ export const FourFoodSearch = styled.div`
     }
 `;
 
-export const FourFoodFooter = styled.div`
+export const FutureEatsFooter = styled.div`
     display: flex;
 
     

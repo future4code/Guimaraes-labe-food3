@@ -17,7 +17,10 @@ export const InitialContainer = styled.div`
         font-weight: normal;
         
     }
-img{
-    height: 90vh;
-}
+
+    span{
+        color: var(--green);
+        font-weight: bold;
+    }
+
 `;

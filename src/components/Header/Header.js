@@ -1,6 +1,4 @@
 import React from "react";
-import ifuture from "../../assets/ifuture-login.png";
-
 
 import {
     HeaderContainer
@@ -8,10 +6,16 @@ import {
 
 const Header = ({ heigth }) => {
     return(<HeaderContainer className='main-container' heigth={heigth}>
-    <div className='main'> 
+    <div className='main'>
+     
      <div className="main-title">
-        <img src={ifuture}/>     
+        <h3>Future</h3>
      </div>
+     
+     <div className="main-subtitle">
+        <span>Eats</span>
+     </div>      
+
     </div>
     </HeaderContainer>)
 }
