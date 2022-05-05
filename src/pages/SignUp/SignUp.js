@@ -15,6 +15,7 @@ const SignUp = () => {
         <LoginContainer className="login-container">
             <Arrow onClick={()=> goToLogin(navegate)}/>
             <Header />
+            
             <SignUpForm />
         </LoginContainer>
     )
