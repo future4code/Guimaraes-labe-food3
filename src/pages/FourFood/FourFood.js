@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import Card from "../../components/Card/Card"
 import Filtro from "../../components/Filtro/Filtro"
 import Footer from "../../components/Footer/Footer"
 import Search from "../../components/Search/Search"
+
+import { GlobalStateContext } from "../../Context/GlobalStateContext"
+
 
 import { 
         FourFoodCardContainer, 
@@ -13,7 +16,13 @@ import {
         FourFoodFooter
 } from './styles'
 
+
 const FourFood = () => {
+
+    const {states, setters } = useContext(GlobalStateContext);
+
+    console.log("infoUser", states.infoUser.data);
+
     return(<>
         <FourFoodHeader>
             <h5 className="FourFood-header">FourFood</h5>
@@ -35,9 +44,7 @@ const FourFood = () => {
         </FourFoodCardContainer>
         <FourFoodFooter>
             <Footer />
-        </FourFoodFooter>
-
-        
+        </FourFoodFooter>        
     </>
     )
 }

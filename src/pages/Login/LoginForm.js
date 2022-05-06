@@ -1,15 +1,23 @@
 import { Button, TextField } from "@material-ui/core";
-import React from "react";
+import React, { useContext } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { login } from "../../Services/auth"
 import { useNavigate} from 'react-router-dom'
-import { goToFutureEats } from "../../routes/coordinator";
+import { goToFourFood } from "../../routes/coordinator";
+import { ToastContainer, toast } from 'react-toastify';
+import { message } from "../../utils/message";
+
+import 'react-toastify/dist/ReactToastify.css';
+import { GlobalStateContext } from "../../Context/GlobalStateContext";
 
 const LoginForm = () => {
 
     const [form, onChange, clear] = useForm({ email: "", password: "" });
+    const { states, setters } =  useContext(GlobalStateContext); 
     const navegate = useNavigate();
+
+
 
     const onSubmitForm = async (event) => {
         event.preventDefault();
@@ -22,12 +30,27 @@ const LoginForm = () => {
         let retorno = await login(data);
 
         if (retorno.data.status === 200) {
+            toast.success(message[0]);
+
+            setters.setInfoUser(retorno);
+
             localStorage.setItem('token', retorno.data.token)
-            goToFutureEats(navegate);
+            goToFourFood(navegate);            
         }
+
+        if(retorno.data.status === 401){
+            toast.error(retorno.data.error);
+        }
+
+        if(retorno.data.status === 404){
+            toast.error(retorno.data.error);
+        }
+
+
     }
 
     return (<InputsContainer>
+    
         <form onSubmit={onSubmitForm}>
             <h3>Entrar</h3>
 
@@ -64,7 +87,11 @@ const LoginForm = () => {
                 variant="contained"
                 margin="normal"
             >Entrar</Button>
+
+            <ToastContainer />
+
         </form>
+       
     </InputsContainer>)
 }
 
