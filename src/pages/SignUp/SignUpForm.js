@@ -1,12 +1,20 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { signup } from "../../Services/auth"
 import { useNavigate} from 'react-router-dom'
+import { goToAddress, goToFourFood } from "../../routes/coordinator";
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
+import { message } from "../../utils/message";
+import { GlobalStateContext } from "../../Context/GlobalStateContext";
 
 const SignUpForm = () => {
     const navegate = useNavigate();
+    const { states, setters } = useContext(GlobalStateContext)
 
     const [form, onChange, clear] = useForm({
         name: "", 
@@ -15,8 +23,6 @@ const SignUpForm = () => {
         password: "",
         confirmarSenha: ""
     });
-
-    const [text,setText] = useState('');
 
     const onSubmitForm = async (event) =>{
         event.preventDefault();
@@ -27,19 +33,34 @@ const SignUpForm = () => {
             cpf: form.cpf,
             password: form.password
         }
+        
+        if(form.password != form.confirmarSenha){
+            return toast.error(message[1])
+        }
 
         let retorno = await signup(user);
 
         if (retorno.data.status === 200) {
             localStorage.setItem('token', retorno.data.token)
-            navegate('/futureeats');
+            console.log("retorno: ", retorno);
+            
+            if(retorno.data.user.hasAddress){
+                return goToFourFood(navegate);
+            }
+            
+            setters.setHasAddress(retorno.data.user.hasAddress)
+            goToAddress(navegate);
+
         }
 
+        if(retorno.data.status === 409){
+            return toast.error(retorno.data.error)
+        }
     }
 
-
-
     return(<InputsContainer>
+        
+        <ToastContainer />
         <form onSubmit={onSubmitForm}>
             <h3>Cadastrar</h3>
 
@@ -83,6 +104,7 @@ const SignUpForm = () => {
             />
 
              <TextField
+                type={'password'}
                 name="password"
                 value={form.password}
                 onChange={onChange}
@@ -96,6 +118,7 @@ const SignUpForm = () => {
             />
 
             <TextField
+                type={'password'}
                 name="confirmarSenha"
                 value={form.confirmarSenha}
                 onChange={onChange}

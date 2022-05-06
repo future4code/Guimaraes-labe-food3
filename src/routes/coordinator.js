@@ -6,6 +6,10 @@ export const goToSignUp = (navegate) =>{
     navegate("/signup");
 }
 
-export const goToFutureEats = (navegate) =>{
-    navegate("/futureeats");
+export const goToFourFood = (navegate) =>{
+    navegate("/fourfood");
+}
+
+export const goToAddress = (navegate) =>{
+    navegate("/address")
 }

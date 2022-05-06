@@ -1,27 +1,66 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { GlobalStateContext } from "../../Context/GlobalStateContext";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
+import { toast, ToastContainer } from 'react-toastify'
+import { message } from "../../utils/message";
+import { address } from  "../../Services/services"
 
 const AddressForm = () => {
-    const [form, onChange, clear] = useForm({email: "", password: "" });
+    const [form, onChange, clear] = useForm({
+        logradouro: "",
+        numero: "",
+        complemento: "",
+        bairro: "",
+        cidade: "",
+        estado: ""
+    });
+
+    const { states, setters } = useContext(GlobalStateContext);
+    const [countShowMessage, setCountShowMessage] = useState(0); 
 
     const onSubmitForm = (event) =>{
-        console.log("event", event)
         event.preventDefault();
+
+        const data = {
+            street: form.logradouro,
+            number: form.numero,
+            neighbourhood: form.bairro,
+            city: form.cidade,
+            state: form.estado,
+            complement: form.complemento
+        }
+
     }
 
     const [text,setText] = useState('');
 
+    const messageUser = () => {
+        toast.success(message[2]);
+        setCountShowMessage(0)
+    }
+
+    useEffect(()=>{
+        console.log("states.hasAddress", states.hasAddress)
+        if(!states.hasAddress){
+            setCountShowMessage(1)
+        }
+    },[])
+
     return(<InputsContainer>
-        <form onSubmit={onSubmitForm}>
-            <h3>Meu endereço</h3>
+
+            {countShowMessage === 1?  messageUser() : '' }
             
+            <ToastContainer />
+
+            <form onSubmit={onSubmitForm}>
+            <h3>Meu endereço</h3>
             <TextField
                 type="text"
                 name="logradouro"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.logradouro}
+                onChange={onChange}
                 label="Logradouro"
                 variant="outlined"
                 fullWidth
@@ -34,8 +73,8 @@ const AddressForm = () => {
             <TextField
                 type="text"
                 name="numero"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.numero}
+                onChange={onChange}
                 label="Número"
                 variant="outlined"
                 fullWidth
@@ -47,8 +86,8 @@ const AddressForm = () => {
             <TextField
                 type="text"
                 name="complemento"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.complemento}
+                onChange={onChange}
                 label="Complemento"
                 variant="outlined"
                 fullWidth
@@ -59,8 +98,8 @@ const AddressForm = () => {
             <TextField
                 type="text"
                 name="bairro"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.bairro}
+                onChange={onChange}
                 label="Bairro"
                 variant="outlined"
                 fullWidth
@@ -72,8 +111,8 @@ const AddressForm = () => {
             <TextField
                 type="text"
                 name="cidade"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.cidade}
+                onChange={onChange}
                 label="Cidade"
                 variant="outlined"
                 fullWidth
@@ -85,8 +124,8 @@ const AddressForm = () => {
             <TextField
                 type="text"
                 name="estado"
-                value={text}
-                // onChange={(e) => setText(e.target.value)}
+                value={form.estado}
+                onChange={onChange}
                 label="Estado"
                 variant="outlined"
                 fullWidth
@@ -104,6 +143,8 @@ const AddressForm = () => {
                     margin="normal"
                 >Salvar</Button>
         </form>
+        
+        
     </InputsContainer>)
 }
 
