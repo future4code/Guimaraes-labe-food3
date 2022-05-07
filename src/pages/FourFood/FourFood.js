@@ -21,7 +21,7 @@ const FourFood = () => {
 
     const {states, setters } = useContext(GlobalStateContext);
 
-    console.log("infoUser", states.infoUser.data);
+/*     console.log("infoUser", states.infoUser.data); */
 
     return(<>
         <FourFoodHeader>

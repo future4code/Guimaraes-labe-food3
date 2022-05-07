@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useContext, useEffect }  from 'react';
 import { Header, Profiles, ProfileH1, Endereco, EnderecoH1, EnderecoH1C, Edit, EditAdress } from './ProfileStyles';
 import { EditIco } from '../../components/Edit/Edit'
 import { Historico, HistoricoH1, ContainerPedidos, ContainerPedidosH2, Data, ContainerPedidosH3 } from './ProfileStyles';
 import Footer from '../../components/Footer/Footer';
+import { GlobalStateContext } from '../../Context/GlobalStateContext';
 
-export default class Profile extends React.Component {
-    render() {
+
+
+const Profile = () => {
+
+    const { states, setters } =  useContext(GlobalStateContext);
+
         return (
+            states.infoUser && 
         <div>
             <Header>
                 Meu perfil
             </Header>   
             <Profiles>
-                <ProfileH1>Meu nome</ProfileH1>
-                <ProfileH1>meuemail@gmail.com</ProfileH1>
-                <ProfileH1>431688898-40</ProfileH1>
+                <ProfileH1>{states.infoUser.data.name}</ProfileH1>
+                <ProfileH1>{states.infoUser.data.email}</ProfileH1>
+                <ProfileH1>{states.infoUser.data.cpf}</ProfileH1>
                 <Edit> <EditIco /></Edit>
             </Profiles>
             <Endereco>
                 <EnderecoH1C>Endereço cadastrado</EnderecoH1C>
-                <EnderecoH1>Rua x, nº x, bairro x, cidade x, estado x</EnderecoH1>
+                <EnderecoH1>{states.infoUser.data.address}</EnderecoH1>
                 <EditAdress> <EditIco /></EditAdress>
             </Endereco>
             <Historico>
@@ -36,4 +42,4 @@ export default class Profile extends React.Component {
         </div>
         );
     }
-    }
+export default Profile

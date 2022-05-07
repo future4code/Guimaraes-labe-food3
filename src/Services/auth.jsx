@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { BASE_URL} from '../constant/urls'
 
-const token = localStorage.getItem("token");
-
 const headers = { 'Content-Type': 'application/json' }
 
 export const login = async (payload) => (
@@ -10,6 +8,7 @@ export const login = async (payload) => (
         { headers: headers })
         .then(response => {
             let data = {
+                data: response.data.user,
                 status: response.status,
                 token: response.data.token
             }

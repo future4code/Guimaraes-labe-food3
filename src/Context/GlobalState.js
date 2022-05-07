@@ -6,9 +6,10 @@ const GlobalState = (props) => {
 
     const [infoUser, setInfoUser]= useState({})
     const [hasAddress, setHasAddress] = useState(false)
+    const [tokenUser, setTokenUser] = useState({})
 
-    const states = { infoUser, hasAddress }
-    const setters = { setInfoUser, setHasAddress }
+    const states = { infoUser, hasAddress,tokenUser }
+    const setters = { setInfoUser, setHasAddress,setTokenUser }
 
 return(
     <GlobalStateContext.Provider value={{ states, setters }}>

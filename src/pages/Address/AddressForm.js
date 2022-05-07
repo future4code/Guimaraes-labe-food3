@@ -6,9 +6,14 @@ import { InputsContainer } from "./styles";
 import { toast, ToastContainer } from 'react-toastify'
 import { message } from "../../utils/message";
 import { address } from  "../../Services/services"
+import { goToFourFood} from "../../routes/coordinator";
+import { useNavigate} from 'react-router-dom'
 
 
 const AddressForm = () => {
+
+    const navigate = useNavigate();
+
     const [form, onChange, clear] = useForm({
         logradouro: "",
         numero: "",
@@ -34,9 +39,10 @@ const AddressForm = () => {
             complement: form.complemento
         }
         const infosUser = await address(body)
-        setters.setInfoUser( infosUser.data)
         localStorage.setItem('token', infosUser.data.token)
+        setters.setTokenUser( infosUser.data.token)
         window.alert("Cadastro Efetuado com Sucesso")
+        goToFourFood(navigate)
         clear({
             street: '',
             number: '',

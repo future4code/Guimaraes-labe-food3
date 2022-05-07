@@ -1,13 +1,12 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { login } from "../../Services/auth"
 import { useNavigate} from 'react-router-dom'
-import { goToFourFood } from "../../routes/coordinator";
+import { goToAddress, goToFourFood } from "../../routes/coordinator";
 import { ToastContainer, toast } from 'react-toastify';
 import { message } from "../../utils/message";
-
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStateContext } from "../../Context/GlobalStateContext";
 
@@ -15,9 +14,7 @@ const LoginForm = () => {
 
     const [form, onChange, clear] = useForm({ email: "", password: "" });
     const { states, setters } =  useContext(GlobalStateContext); 
-    const navegate = useNavigate();
-
-
+    const navigate = useNavigate();
 
     const onSubmitForm = async (event) => {
         event.preventDefault();
@@ -28,16 +25,19 @@ const LoginForm = () => {
         }
 
         let retorno = await login(data);
+    
 
         if (retorno.data.status === 200) {
-            toast.success(message[0]);
-
-            setters.setInfoUser(retorno);
-
+            setters.setInfoUser(retorno.data);
             localStorage.setItem('token', retorno.data.token)
-            goToFourFood(navegate);            
+            window.alert("Seja Bem-Vindo")
+            if(retorno.data.hasAddress === undefined)  {
+                goToAddress(navigate)
+            }else{
+                goToFourFood(navigate);  
+            }  
         }
-
+        
         if(retorno.data.status === 401){
             toast.error(retorno.data.error);
         }
@@ -45,10 +45,8 @@ const LoginForm = () => {
         if(retorno.data.status === 404){
             toast.error(retorno.data.error);
         }
-
-
     }
-
+ 
     return (<InputsContainer>
     
         <form onSubmit={onSubmitForm}>
