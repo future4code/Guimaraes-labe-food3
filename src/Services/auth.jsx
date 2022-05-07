@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { BASE_URL} from '../constant/urls'
 
-const headers = { 'Content-Type': 'application/json' }
+const token = localStorage.getItem("token");
 
+const headers = { 'Content-Type': 'application/json' }
 
 export const login = async (payload) => (
     await axios.post(`${BASE_URL}/login`, payload,

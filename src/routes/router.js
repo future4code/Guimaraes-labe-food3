@@ -6,6 +6,7 @@ import FourFood from "../pages/FourFood/FourFood";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Cart  from "../pages/Cart/Cart.js";
+import Profile from "../pages/ProfilePages/Profile"; 
 
 const Router = () => {
     return(
@@ -17,7 +18,9 @@ const Router = () => {
                 <Route path="/address" element={<Address /> } />
                 <Route path="/fourfood" element={<FourFood />} />
                 <Route path="/cart" element={<Cart/>} />
-            </Routes>
+                <Route path="/profile" element={<Profile/>} />
+                <Route path="/cart" element={<Cart/>} />
+            </Routes>   
         </BrowserRouter>
     )
 }

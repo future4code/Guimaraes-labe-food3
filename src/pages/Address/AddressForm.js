@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import { message } from "../../utils/message";
 import { address } from  "../../Services/services"
 
+
 const AddressForm = () => {
     const [form, onChange, clear] = useForm({
         logradouro: "",
@@ -17,13 +18,14 @@ const AddressForm = () => {
         estado: ""
     });
 
+ 
     const { states, setters } = useContext(GlobalStateContext);
     const [countShowMessage, setCountShowMessage] = useState(0); 
 
-    const onSubmitForm = (event) =>{
+    const onSubmitForm = async (event) =>{
         event.preventDefault();
 
-        const data = {
+        const body = {
             street: form.logradouro,
             number: form.numero,
             neighbourhood: form.bairro,
@@ -31,11 +33,22 @@ const AddressForm = () => {
             state: form.estado,
             complement: form.complemento
         }
+        const infosUser = await address(body)
+        setters.setInfoUser( infosUser.data)
+        localStorage.setItem('token', infosUser.data.token)
+        window.alert("Cadastro Efetuado com Sucesso")
+        clear({
+            street: '',
+            number: '',
+            neighbourhood: '',
+            city: '',
+            state: '',
+            complement:''
+        })
+    };
 
-    }
-
-    const [text,setText] = useState('');
-
+    console.log("estado global", states.infoUser)
+    
     const messageUser = () => {
         toast.success(message[2]);
         setCountShowMessage(0)

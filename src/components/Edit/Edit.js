@@ -1,4 +1,4 @@
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from '@material-ui/icons/Edit';
 import React from 'react';
 import { Edit } from './Style';
 

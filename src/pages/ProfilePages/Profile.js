@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header, Profiles, ProfileH1, Endereco, EnderecoH1, EnderecoH1C, Edit, EditAdress } from './ProfileStyles';
-import { EditIco } from '../components/Edit/Edit';
+import { EditIco } from '../../components/Edit/Edit'
 import { Historico, HistoricoH1, ContainerPedidos, ContainerPedidosH2, Data, ContainerPedidosH3 } from './ProfileStyles';
-import Footer from '../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 export default class Profile extends React.Component {
     render() {

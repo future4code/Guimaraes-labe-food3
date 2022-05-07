@@ -4,7 +4,7 @@ import {GlobalStateContext} from './GlobalStateContext';
 
 const GlobalState = (props) => {
 
-    const [infoUser, setInfoUser]= useState('')
+    const [infoUser, setInfoUser]= useState({})
     const [hasAddress, setHasAddress] = useState(false)
 
     const states = { infoUser, hasAddress }
