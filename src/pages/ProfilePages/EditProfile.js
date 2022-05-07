@@ -1,18 +1,22 @@
 import React from "react";
 import EditPerfil from "./EditForml";
-import Arrow from '../components/Arrow/Arrow';
+import Arrow from "../../components/Arrow/Arrow";
 import {Geral, Perfil} from "./styles";
+import {goToProfile} from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
+ 
 
 
-export default class EditProfile extends React.Component {
-  render() {
+const EditProfile = () => {
+  const navegate = useNavigate();
+
     return (
       <Geral>
-        <Arrow onClick={this.props.onClick} />
+           <Arrow onClick={()=> goToProfile(navegate)}/>
         <Perfil>
         <EditPerfil />
         </Perfil>
       </Geral>
     );
-  }
 }
+export default EditProfile;
