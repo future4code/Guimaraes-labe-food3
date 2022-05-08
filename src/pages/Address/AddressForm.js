@@ -8,11 +8,22 @@ import { message } from "../../utils/message";
 import { address } from  "../../Services/services"
 import { goToFourFood} from "../../routes/coordinator";
 import { useNavigate} from 'react-router-dom'
+import axios from "axios";
+import { BASE_URL } from "../../constant/urls";
 
 
 const AddressForm = () => {
-
+ 
     const navigate = useNavigate();
+
+    const { states, setters } = useContext(GlobalStateContext);
+    const [countShowMessage, setCountShowMessage] = useState(0); 
+
+    const token = states.infoUser.token 
+    const headers = { headers: { auth: token,
+        'Content-Type': 'application/json' 
+    }};
+
 
     const [form, onChange, clear] = useForm({
         logradouro: "",
@@ -23,9 +34,8 @@ const AddressForm = () => {
         estado: ""
     });
 
- 
-    const { states, setters } = useContext(GlobalStateContext);
-    const [countShowMessage, setCountShowMessage] = useState(0); 
+  
+    console.log("token recebido", token)
 
     const onSubmitForm = async (event) =>{
         event.preventDefault();
@@ -38,11 +48,19 @@ const AddressForm = () => {
             state: form.estado,
             complement: form.complemento
         }
-        const infosUser = await address(body)
-        localStorage.setItem('token', infosUser.data.token)
-        setters.setTokenUser( infosUser.data.token)
-        window.alert("Cadastro Efetuado com Sucesso")
-        goToFourFood(navigate)
+
+        try{
+            const response = await axios.put(`${BASE_URL}/address`, body, headers)
+            console.log("resposta endereco Api", response)
+            localStorage.setItem('token', response.data.token)
+            setters.setTokenUser( response.data.token)
+            window.alert("Cadastro Efetuado com Sucesso")
+            goToFourFood(navigate)
+        }catch(error){
+            console.log("resposta endereco Api", error) 
+        
+        }
+
         clear({
             street: '',
             number: '',
@@ -53,19 +71,19 @@ const AddressForm = () => {
         })
     };
 
-    console.log("estado global", states.infoUser)
+console.log("endereco",states.infoUser.token )
     
     const messageUser = () => {
         toast.success(message[2]);
         setCountShowMessage(0)
     }
 
-    useEffect(()=>{
+ /*    useEffect(()=>{
         console.log("states.hasAddress", states.hasAddress)
         if(!states.hasAddress){
             setCountShowMessage(1)
         }
-    },[])
+    },[]) */
 
     return(<InputsContainer>
 

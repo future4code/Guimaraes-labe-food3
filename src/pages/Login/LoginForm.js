@@ -31,11 +31,10 @@ const LoginForm = () => {
             setters.setInfoUser(retorno.data);
             localStorage.setItem('token', retorno.data.token)
             window.alert("Seja Bem-Vindo")
-            if(retorno.data.hasAddress === undefined)  {
+            goToFourFood(navigate);
+            if(retorno.data.data.hasAddress === false)  {
                 goToAddress(navigate)
-            }else{
-                goToFourFood(navigate);  
-            }  
+            }
         }
         
         if(retorno.data.status === 401){

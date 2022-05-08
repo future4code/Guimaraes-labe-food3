@@ -6,12 +6,8 @@ import FourFood from "../pages/FourFood/FourFood";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Cart  from "../pages/Cart/Cart.js";
-<<<<<<< HEAD
-import Profile from "../pages/ProfilePages/Profile"; 
-=======
 import Profile from "../pages/ProfilePages/Profile";
 import EditProfile from "../pages/ProfilePages/EditProfile";
->>>>>>> master
 
 const Router = () => {
     return(
@@ -24,13 +20,8 @@ const Router = () => {
                 <Route path="/fourfood" element={<FourFood />} />
                 <Route path="/cart" element={<Cart/>} />
                 <Route path="/profile" element={<Profile/>} />
-<<<<<<< HEAD
-                <Route path="/cart" element={<Cart/>} />
-            </Routes>   
-=======
                 <Route path="/editprofile" element={<EditProfile/>} />
             </Routes>
->>>>>>> master
         </BrowserRouter>
     )
 }

@@ -5,24 +5,29 @@ import { Historico, HistoricoH1, ContainerPedidos, ContainerPedidosH2, Data, Con
 import Footer from '../../components/Footer/Footer';
 import { goTOEditProfile, goToAddress } from '../../routes/coordinator';
 import { useNavigate } from 'react-router-dom';
+import { GlobalStateContext } from '../../Context/GlobalStateContext';
 
 const Profile = () => {
-         const navegate = useNavigate();
+    const { states, setters } =  useContext(GlobalStateContext);
+    
+    const navigate = useNavigate();
+console.log("dados usuario", states)
         return (
+            states.infoUser && 
         <ProfileContainer>
             <Header>
                 Meu perfil
             </Header>   
             <Profiles>
-                <ProfileH1>Meu nome</ProfileH1>
-                <ProfileH1>meuemail@gmail.com</ProfileH1>
-                <ProfileH1>431688898-40</ProfileH1>
-                <Edit onClick={() => goTOEditProfile (navegate)}> <EditIco /></Edit>
+                <ProfileH1>{states.infoUser.data.name}</ProfileH1>
+                <ProfileH1>{states.infoUser.data.email}</ProfileH1>
+                <ProfileH1>{states.infoUser.data.cpf}</ProfileH1>
+                <Edit> <EditIco /></Edit>
             </Profiles>
             <Endereco>
                 <EnderecoH1C>Endereço cadastrado</EnderecoH1C>
-                <EnderecoH1>Rua x, nº x, bairro x, cidade x, estado x</EnderecoH1>
-                <EditAdress onClick={() => goToAddress (navegate)}> <EditIco /></EditAdress>
+                <EnderecoH1C>{states.infoUser.data.address}</EnderecoH1C>
+                <EditAdress onClick={() => goToAddress (navigate)}> <EditIco /></EditAdress>
             </Endereco>
             <Historico>
                 <HistoricoH1>Histórico de pedidos</HistoricoH1>
