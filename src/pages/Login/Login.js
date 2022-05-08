@@ -11,14 +11,14 @@ import { goToSignUp } from "../../routes/coordinator";
 import LoginForm from "./LoginForm";
 
 const Login = () => {
-    const navegate = useNavigate();
+    const navigate = useNavigate();
     return(
         <LoginContainer className="login-container">
             <Header heigth={'3em'} />            
             <LoginForm />
             <SignUpButtonContainer>
                 <Button
-                    onClick={() =>  goToSignUp(navegate) }
+                    onClick={() =>  goToSignUp(navigate) }
                     type="submit"
                     fullWidth
                     variant="text"

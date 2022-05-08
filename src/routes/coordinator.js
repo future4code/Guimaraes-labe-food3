@@ -10,6 +10,7 @@ export const goToFourFood = (navigate) =>{
     navigate("/fourfood");
 }
 
+<<<<<<< HEAD
 export const goToAddress = (navigate) =>{
     navigate("/address")
 }
@@ -21,3 +22,16 @@ export const goToProfile = (navigate) =>{
 export const goToCart = (navigate) =>{
     navigate("/cart")
 }
+=======
+export const goToAddress = (navegate) =>{
+    navegate("/address")
+}
+
+export const goTOEditProfile = (navegate) =>{
+    navegate("/editprofile")
+}
+
+export const goToProfile = (navegate) =>{
+    navegate("/profile")
+}
+>>>>>>> master
