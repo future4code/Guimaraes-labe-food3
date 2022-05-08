@@ -13,3 +13,11 @@ export const goToFourFood = (navegate) =>{
 export const goToAddress = (navegate) =>{
     navegate("/address")
 }
+
+export const goTOEditProfile = (navegate) =>{
+    navegate("/editprofile")
+}
+
+export const goToProfile = (navegate) =>{
+    navegate("/profile")
+}

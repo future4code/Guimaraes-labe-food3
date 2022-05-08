@@ -23,8 +23,8 @@ export const InputsContainer = styled.div`
     }
 
     form > button{
-        color: var(--Lipstick);
-        background-color: var(--Lipstick);
+        color: var(--red);
+        background-color: var(--red);
     }
 `
 export const Geral = styled.div`
