@@ -3,12 +3,12 @@ import { BASE_URL} from '../constant/urls'
 
 const headers = { 'Content-Type': 'application/json' }
 
-
 export const login = async (payload) => (
     await axios.post(`${BASE_URL}/login`, payload,
         { headers: headers })
         .then(response => {
             let data = {
+                data: response.data.user,
                 status: response.status,
                 token: response.data.token
             }

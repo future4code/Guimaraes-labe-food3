@@ -13,7 +13,7 @@ import { message } from "../../utils/message";
 import { GlobalStateContext } from "../../Context/GlobalStateContext";
 
 const SignUpForm = () => {
-    const navegate = useNavigate();
+    const navigate = useNavigate();
     const { states, setters } = useContext(GlobalStateContext)
 
     const [form, onChange, clear] = useForm({
@@ -45,11 +45,11 @@ const SignUpForm = () => {
             console.log("retorno: ", retorno);
             
             if(retorno.data.user.hasAddress){
-                return goToFourFood(navegate);
+                return goToFourFood(navigate);
             }
             
             setters.setHasAddress(retorno.data.user.hasAddress)
-            goToAddress(navegate);
+            goToAddress(navigate);
 
         }
 

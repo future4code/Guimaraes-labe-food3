@@ -70,7 +70,7 @@ export const Edit = styledComponents.div`
     height: 10vh;
     display: flex;
     margin-top: -8vh;
-    margin-left: 90vw;
+    margin-left: 68vh;
 `;
 export const EditAdress = styledComponents.div`
     display: flex;
@@ -79,7 +79,7 @@ export const EditAdress = styledComponents.div`
     height: 10vh;
     display: flex;
     margin-top: -4vh;
-    margin-left: 90vw;
+    margin-left: 94vw;
 `;
 export const Historico = styledComponents.div`
     background-color: white;
@@ -118,6 +118,8 @@ export const ContainerPedidos = styledComponents.div`
     display: flex;
     border: 2px solid #B8B8B8;
     border-radius: 10px;
+    width: 100%;
+    margin-left: 1vh;
 `;
 export const ContainerPedidosH2 = styledComponents.h2`
     background-color: white;
@@ -126,7 +128,6 @@ export const ContainerPedidosH2 = styledComponents.h2`
     font-size: 16px;
     font-weight: regular;
     font-family: 'Roboto';
-    margin-left: 10px;
 `;
 export const Data = styledComponents.h3`
     background-color: white;
@@ -151,4 +152,13 @@ export const ContainerPedidosH3 = styledComponents.h3`
 `;
 
 
+export const ProfileContainer = styledComponents.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+`;

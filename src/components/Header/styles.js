@@ -13,6 +13,7 @@ export const HeaderContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-content: center;
+        border: 2px solid;
     }
 
     img{
