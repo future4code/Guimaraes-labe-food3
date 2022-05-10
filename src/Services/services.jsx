@@ -16,8 +16,7 @@ export const getRestaurant = async (authToken) => {
                 status: response.status,
                 data: response.data.restaurants
             }
-
-    /*         console.log("get res cat",data) */
+            console.log("get res categoria",data)
             return data;
         })
 }
@@ -44,6 +43,8 @@ export const useRequestOrders = (url, initialState) => {
       };
       fetch();
     }, []);
+
     return [orders, loading, error];
+    
   };
   
