@@ -16,8 +16,6 @@ export const getRestaurant = async (authToken) => {
                 status: response.status,
                 data: response.data.restaurants
             }
-
-    /*         console.log("get res cat",data) */
             return data;
         })
 }

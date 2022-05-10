@@ -17,9 +17,15 @@ import {
 } from './styles'
 
 
-const FourFood = () => {
+const FourFood = async () => {
 
     const {states, setters } = useContext(GlobalStateContext);
+
+    const token = states.infoUser.token
+
+
+
+    console.log("token", states.infoUser.token)
 
     return(<>
         <FourFoodHeader>
