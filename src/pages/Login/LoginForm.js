@@ -1,5 +1,5 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState} from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { login } from "../../Services/auth"
@@ -9,14 +9,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import { message } from "../../utils/message";
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStateContext } from "../../Context/GlobalStateContext";
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const LoginForm = () => {
 
     const [form, onChange, clear] = useForm({ email: "", password: "" });
     const { states, setters } =  useContext(GlobalStateContext); 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
     const navigate = useNavigate();
 
     const onSubmitForm = async (event) => {
+        setLoading(true)
         event.preventDefault();
 
         let data = {
@@ -29,8 +33,10 @@ const LoginForm = () => {
 
         if (retorno.data.status === 200) {
             setters.setInfoUser(retorno.data);
+            setters.setTokenUser(retorno.data.token)
             localStorage.setItem('token', retorno.data.token)
             window.alert("Seja Bem-Vindo")
+            setLoading(false)
             goToFourFood(navigate);
             if(retorno.data.data.hasAddress === false)  {
                 goToAddress(navigate)
@@ -83,7 +89,10 @@ const LoginForm = () => {
                 fullWidth
                 variant="contained"
                 margin="normal"
-            >Entrar</Button>
+            >
+                 {loading ? <CircularProgress color={'inherit'} size={24}/>: <>Entrar</>}
+
+            </Button>
 
             <ToastContainer />
 
