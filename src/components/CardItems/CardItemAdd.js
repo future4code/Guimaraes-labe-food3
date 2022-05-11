@@ -9,7 +9,12 @@ export const CardItemAdd = () => {
     const [quantity, setQuantity]  = useState(0)
 
     const handleQuantity = () =>{
-        setQuantity( quantity +1)
+      if (quantity > 0) {
+        setQuantity(quantity - 1)
+      }
+      else{
+        alert('Não é possível diminuir a quantidade')
+      } 
     }
 
   return (

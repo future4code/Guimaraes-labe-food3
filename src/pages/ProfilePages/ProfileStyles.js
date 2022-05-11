@@ -82,7 +82,7 @@ export const EditAdress = styledComponents.div`
     height: 10vh;
     display: flex;
     margin-top: -4vh;
-    margin-left: 64vw;
+    margin-left: 37vw;
 `;
 export const Historico = styledComponents.div`
     background-color: white;
@@ -111,7 +111,7 @@ export const HistoricoH1 = styledComponents.h1`
     font-family: 'Roboto';
     padding-bottom: 10px;
     margin: 0px;
-    padding-right: 50vw;
+    padding-right: 20vw;
 `;
 
 export const ContainerPedidos = styledComponents.div`
@@ -157,7 +157,7 @@ export const ContainerPedidosH3 = styledComponents.h3`
 
 export const ProfileContainer = styledComponents.div`
     display: flex;
-    width: 80%;
+    width: 80vh;
     height: 100%;
     margin: 0 auto;
     flex-direction: column;

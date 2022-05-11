@@ -57,7 +57,7 @@ const Profile = () => {
                 <>
                     {loading && <CircularProgress />}
                     {!loading && orders && orders.length > 0 && ordersList}
-                    {!loading && orders && orders.length === 0 && (
+                    {!loading && orders && orders.length === 0 && ( 
                         <h2> Você não tem nenhum pedido</h2>
                     )}
                 </>
