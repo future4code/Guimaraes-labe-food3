@@ -17,7 +17,7 @@ import {
 } from './styles'
 
 
-const FourFood = async () => {
+const FourFood =  () => {
 
     const {states, setters } = useContext(GlobalStateContext);
 

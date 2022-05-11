@@ -12,10 +12,10 @@ const Filtro = () => {
         {id: 5, categoria: "Brasileira"}
     ]);
 
-    useEffect(()=>{
+  /*   useEffect(()=>{
         category();
     },[])
-
+ */
     const category = async () =>{
         const infoUser = JSON.parse(localStorage.getItem('infoUser'));
         const token = infoUser.token;
