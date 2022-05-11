@@ -143,5 +143,59 @@ grid-template-columns: 1fr 2fr;
     border: solid 1px #b8b8b8;
     width: 80vw;
     max-width: 450px;
+`;
 
+export const TotalItens = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 20.5rem;
+    height: 10.5rem;
+    margin: 1.688rem 1rem 1.813rem;
+    padding: 0.688rem 0 4.25rem;
+    background-color: var(--white);
+
+    border: 1px solid black;
+
+    span{
+        width: 18.5rem;
+        height: 1.125rem;
+        margin: 0.375rem 0 0 1rem;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: center;
+        color: var(--black);
+    }
+
+    .select-itens{
+        select{
+            width: 18.5rem;
+            height: 3.5rem;
+            margin: 0.563rem 1rem 0 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            border: solid 1px var(--greyish);
+        }
+    }
+
+    
+    .add-itens-card{
+        width: auto;
+        height: 1.188rem;
+        margin: 2.438rem 1rem 1rem 2.063rem;
+        font-family: Roboto;
+        font-size: 1rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        text-align: right;
+        color: #4f81a8;
+    }
 `;
