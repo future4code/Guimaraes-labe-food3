@@ -30,12 +30,7 @@ const FourFood =  () => {
             id={local.id}
             delivery={local.deliveryTime}
             shippingPrice={local.shipping}
-
-            
-            
             />
-            
-
         )
     })
 

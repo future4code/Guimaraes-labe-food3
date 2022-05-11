@@ -32,8 +32,10 @@ const LoginForm = () => {
     
 
         if (retorno.data.status === 200) {
-            setters.setInfoUser(retorno.data);            
+            setters.setInfoUser(retorno.data); 
+            setters.setToken(retorno.data.token)           
             localStorage.setItem('infoUser',JSON.stringify(retorno.data))
+            localStorage.setItem('token', retorno.data.token)
             window.alert("Seja Bem-Vindo")
             setLoading(false)
             goToFourFood(navigate);
@@ -50,7 +52,7 @@ const LoginForm = () => {
             toast.error(retorno.data.error);
         }
     }
- 
+ console.log("token depois da funcao", states.token)
     return (<InputsContainer>
     
         <form onSubmit={onSubmitForm}>

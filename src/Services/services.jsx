@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { GlobalStateContext } from "../Context/GlobalStateContext";
 
-const infoUser = JSON.parse(localStorage.getItem('infoUser'))
-
- const token =  infoUser.token
 
 export const getRestaurant = (url, initialState) => {
   const [restaurants, setRestaurants] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
+  const { states, setters } =  useContext(GlobalStateContext); 
+
   useEffect(() => {
+
+    const token = states.token
+
+    console.log("token na services", states.token)
+
     const fetch = async () => {
       setLoading(true);
       try {
@@ -31,15 +36,20 @@ export const getRestaurant = (url, initialState) => {
   }, []);
 
   return [restaurants, loading, error];
-  
 };
 
 export const useRequestOrders = (url, initialState) => {
+
+  const { states, setters } =  useContext(GlobalStateContext); 
+
     const [orders, setOrders] = useState(initialState);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
   
     useEffect(() => {
+      
+      const token = states.token
+
       const fetch = async () => {
         setLoading(true);
         try {
