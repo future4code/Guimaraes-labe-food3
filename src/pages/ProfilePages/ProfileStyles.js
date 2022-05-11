@@ -1,5 +1,6 @@
 import styledComponents from "styled-components";
 
+
 export const Header = styledComponents.header`
     background-color: white;
     color: black;
@@ -12,6 +13,7 @@ export const Header = styledComponents.header`
 `;
 export const Profiles = styledComponents.div`
     background-color: white;
+    width: 100%;
     color: black;
     text-align: center;
     font-size: 16px;
@@ -34,6 +36,7 @@ export const ProfileH1 = styledComponents.h1`
 `;
 export const Endereco = styledComponents.div`
     background-color: #B8B8B8;
+    width: 100%;
     color: black;
     text-align: center;
     font-size: 16px;
@@ -70,7 +73,7 @@ export const Edit = styledComponents.div`
     height: 10vh;
     display: flex;
     margin-top: -8vh;
-    margin-left: 68vh;
+    margin-left: 128vh;
 `;
 export const EditAdress = styledComponents.div`
     display: flex;
@@ -79,7 +82,7 @@ export const EditAdress = styledComponents.div`
     height: 10vh;
     display: flex;
     margin-top: -4vh;
-    margin-left: 94vw;
+    margin-left: 64vw;
 `;
 export const Historico = styledComponents.div`
     background-color: white;
@@ -154,11 +157,10 @@ export const ContainerPedidosH3 = styledComponents.h3`
 
 export const ProfileContainer = styledComponents.div`
     display: flex;
-    width: 100%;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 `;
