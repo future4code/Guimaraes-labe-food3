@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
     .image{
         width: 328px;
         height: 120px;
-        margin: 0 0 12px;
+        margin: 5px 0 12px;
         object-fit: contain;
     }
 

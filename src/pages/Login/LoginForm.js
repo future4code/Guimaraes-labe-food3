@@ -33,9 +33,7 @@ const LoginForm = () => {
 
         if (retorno.data.status === 200) {
             setters.setInfoUser(retorno.data);            
-            setters.setTokenUser(retorno.data.token)
             localStorage.setItem('infoUser',JSON.stringify(retorno.data))
-            localStorage.setItem('token', retorno.data.token)
             window.alert("Seja Bem-Vindo")
             setLoading(false)
             goToFourFood(navigate);

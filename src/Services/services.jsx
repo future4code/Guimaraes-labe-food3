@@ -1,25 +1,38 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../constant/urls";
 
- const token = localStorage.getItem("token");
+const infoUser = JSON.parse(localStorage.getItem('infoUser'))
 
+ const token =  infoUser.token
 
-export const getRestaurant = async (authToken) => {
-    await axios.get(`${BASE_URL}/restaurants`,
-        { headers: {
-            'Content-Type': 'application/json',
-            auth: authToken
-        }})
-        .then( response => {
-            let data = {
-                status: response.status,
-                data: response.data.restaurants
-            }
-            console.log("get res categoria",data)
-            return data;
-        })
-}
+export const getRestaurant = (url, initialState) => {
+  const [restaurants, setRestaurants] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+
+  useEffect(() => {
+    const fetch = async () => {
+      setLoading(true);
+      try {
+        const  {data} = await axios.get(url,  { headers: {
+          'Content-Type': 'application/json',
+          auth: token
+      }});
+     setRestaurants(data.restaurants) 
+     console.log("restaurantes",data.restaurants)
+      } catch (err) {
+        setError(err);
+        console.log("erro", err.response.data.message)
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetch();
+  }, []);
+
+  return [restaurants, loading, error];
+  
+};
 
 export const useRequestOrders = (url, initialState) => {
     const [orders, setOrders] = useState(initialState);

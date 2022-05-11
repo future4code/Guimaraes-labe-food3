@@ -1,12 +1,10 @@
-import React, { useContext } from "react"
-
-import Card from "../../components/Card/Card"
-import Filtro from "../../components/Filtro/Filtro"
-import Footer from "../../components/Footer/Footer"
-import Search from "../../components/Search/Search"
-
-import { GlobalStateContext } from "../../Context/GlobalStateContext"
-
+import React, { useContext } from 'react'
+import Card from '../../components/Card/Card'
+import Filtro from '../../components/Filtro/Filtro'
+import Footer from '../../components/Footer/Footer'
+import Search from '../../components/Search/Search'
+import { BASE_URL } from '../../constant/urls';
+import { getRestaurant } from '../../Services/services'
 
 import { 
         FourFoodCardContainer, 
@@ -19,17 +17,33 @@ import {
 
 const FourFood =  () => {
 
-    const {states, setters } = useContext(GlobalStateContext);
+    const [restaurants, loading, error] = getRestaurant(`${BASE_URL}/restaurants`, []);
 
-    const token = states.infoUser.token
+    const cardRestaurant =
+    restaurants && 
+    restaurants.map((local, index)=>{
+        return(
+            <Card 
+            key={index}
+            image={local.logoUrl}
+            name={local.name}
+            id={local.id}
+            delivery={local.deliveryTime}
+            shippingPrice={local.shipping}
 
+            
+            
+            />
+            
 
+        )
+    })
 
-    console.log("token", states.infoUser.token)
+ console.log('restaurantes', restaurants)
 
     return(<>
         <FourFoodHeader>
-            <h5 className="FourFood-header">FourFood</h5>
+            <h5 className='FourFood-header'>FourFood</h5>
         </FourFoodHeader>
         
         <FourFoodSearch>
@@ -41,10 +55,7 @@ const FourFood =  () => {
         </FourFoodContainer>
         
         <FourFoodCardContainer>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {cardRestaurant}
         </FourFoodCardContainer>
         <FourFoodFooter>
             <Footer />
