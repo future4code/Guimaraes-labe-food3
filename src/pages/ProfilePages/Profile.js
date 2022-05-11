@@ -13,7 +13,8 @@ import { useRequestOrders } from '../../Services/services';
 
 
 const Profile = () => {
-    const { states, setters } = useContext(GlobalStateContext);
+    // const { states, setters } = useContext(GlobalStateContext);
+    const infoUser = JSON.parse(localStorage.getItem('infoUser'))
 
     const [orders, loading, error] = useRequestOrders(`${BASE_URL}/orders/history`, []);
 
@@ -32,22 +33,21 @@ const Profile = () => {
         }
     }
 
-    console.log('lista de pedidos', orders)
     return (
-        states.infoUser &&
+        infoUser &&
         <ProfileContainer>
             <Header>
                 Meu perfil
             </Header>
             <Profiles>
-                <ProfileH1>{states.infoUser.data.name}</ProfileH1>
-                <ProfileH1>{states.infoUser.data.email}</ProfileH1>
-                <ProfileH1>{states.infoUser.data.cpf}</ProfileH1>
+                <ProfileH1>{infoUser.data.name}</ProfileH1>
+                <ProfileH1>{infoUser.data.email}</ProfileH1>
+                <ProfileH1>{infoUser.data.cpf}</ProfileH1>
                 <Edit> <EditIco /></Edit>
             </Profiles>
             <Endereco>
                 <EnderecoH1C>Endereço cadastrado</EnderecoH1C>
-                <EnderecoH1C>{states.infoUser.data.address}</EnderecoH1C>
+                <EnderecoH1C>{infoUser.data.address}</EnderecoH1C>
                 <EditAdress onClick={() => goToAddress(navigate)}> <EditIco /></EditAdress>
             </Endereco>
             <Historico>

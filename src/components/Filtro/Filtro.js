@@ -21,7 +21,6 @@ const Filtro = () => {
         const token = infoUser.token;
         console.log("Token", infoUser);
         let data = await getRestaurant(token);
-        console.log("Dados do res", data)
     }
 
     return(<FiltroContainer className="filtro">
