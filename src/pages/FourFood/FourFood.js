@@ -21,8 +21,6 @@ const FourFood =  () => {
 
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
 
-    
-
     const cardRestaurant =
     restaurants && 
     restaurants.map((local, index)=>{
@@ -38,19 +36,19 @@ const FourFood =  () => {
         )
     })
 
-
     return(<>
         <FourFoodHeader>
             <h5 className='FourFood-header'>FourFood</h5>
         </FourFoodHeader>
         
         <FourFoodSearch>
-            <Search />
+            <Search 
+            filter = {[filter, setFilter, setRestaurants]}
+            />
         </FourFoodSearch>
        
         <FourFoodContainer>
      <Filtro category={category}
-
      filter = {[filter, setFilter, setRestaurants]}
      />
         </FourFoodContainer>
