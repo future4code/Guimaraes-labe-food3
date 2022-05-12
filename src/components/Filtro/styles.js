@@ -1,4 +1,4 @@
-/* import styled from 'styled-components'
+import styled from 'styled-components'
 
 export const FiltroContainer = styled.div`
     display: flex;
@@ -7,11 +7,9 @@ export const FiltroContainer = styled.div`
     width: 330px;
     height: 42px;
     margin: 8px 0 0;
-    padding: 12px 0 12px 16px; */
+    padding: 12px 0 12px 0; 
 
-    /* border: solid 1px black; */
-/* 
-    overflow-x: auto;
+    overflow-x:auto;
 
     ul{
         padding-left: 25px;
@@ -31,15 +29,13 @@ export const FiltroContainer = styled.div`
         }
     }
 
-    
-
    li:hover{
        color: var(--blue);
        cursor: pointer;
    }
 
    ::-webkit-scrollbar {
-        display: none;
+        display: hidden;
     }
 
-`; */
+`; 

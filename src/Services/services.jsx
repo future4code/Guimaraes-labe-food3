@@ -8,6 +8,7 @@ export const getRestaurant = (url, initialState) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const [category, setCategory] = useState([])
+  const [filter, setFilter] = useState(restaurants)
 
   const { states, setters } =  useContext(GlobalStateContext); 
 
@@ -24,6 +25,7 @@ export const getRestaurant = (url, initialState) => {
       }});
       const newArrayCategory = []
      setRestaurants(data.restaurants) 
+     setFilter(data.restaurants)
 for(let restaurant of data.restaurants){
   const newCategory = restaurant.category
   newArrayCategory.push(newCategory)
@@ -40,7 +42,7 @@ setCategory(newArrayCategory)
     fetch();
   }, []);
 
-  return [restaurants, loading, error, category ];
+  return [restaurants, loading, error, category, setRestaurants, filter, setFilter ];
 };
 
 export const useRequestOrders = (url, initialState) => {
