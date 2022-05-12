@@ -7,23 +7,22 @@ export const FiltroContainer = styled.div`
     width: 330px;
     height: 42px;
     margin: 8px 0 0;
-    padding: 12px 0 12px 0; 
 
     overflow-x:auto;
 
     ul{
-        padding-left: 25px;
+        margin-right: 10px;
 
         li{
             list-style: none;
-            height: 18px;
+            height: 16px;
             left: 20px;
             font-family: var(--font-roboto);
             font-size: var(--font-size);
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
-            line-height: normal;
+            line-height: 18px;
             letter-spacing: -0.39px;
             text-align: center;
         }
@@ -37,5 +36,6 @@ export const FiltroContainer = styled.div`
    ::-webkit-scrollbar {
         display: hidden;
     }
+
 
 `; 

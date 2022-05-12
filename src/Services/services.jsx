@@ -87,6 +87,7 @@ export const useRequestOrders = (url, initialState) => {
   };
 
 
+
 export const getRestaurantDetail = (id) =>{
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState();
@@ -117,3 +118,4 @@ export const getRestaurantDetail = (id) =>{
 
     },[])
 }
+
