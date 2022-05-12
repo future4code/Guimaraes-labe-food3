@@ -1,5 +1,5 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useContext, useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { login } from "../../Services/auth"
@@ -19,16 +19,22 @@ const LoginForm = () => {
     const [error, setError] = useState();
     const navigate = useNavigate();
 
-    const onSubmitForm = async (event) => {
+    const onSubmitForm = (event) => {
         setLoading(true)
         event.preventDefault();
 
-        let data = {
+        let payload = {
             email: form.email,
             password: form.password
         }
 
-        let retorno = await login(data);
+        auth(payload);
+
+        
+    }
+
+    const auth = async (payload) => {
+        let retorno = await login(payload);
     
 
         if (retorno.data.status === 200) {
@@ -36,7 +42,10 @@ const LoginForm = () => {
             setters.setToken(retorno.data.token)           
             localStorage.setItem('infoUser',JSON.stringify(retorno.data))
             localStorage.setItem('token', retorno.data.token)
-            window.alert("Seja Bem-Vindo")
+
+                window.alert("Seja Bem-Vindo")
+            
+           
             setLoading(false)
             goToFourFood(navigate);
             if(retorno.data.data.hasAddress === false)  {
@@ -52,7 +61,16 @@ const LoginForm = () => {
             toast.error(retorno.data.error);
         }
     }
- console.log("token depois da funcao", states.token)
+
+    useEffect(()=>{
+        const infoUser = JSON.parse(localStorage.getItem('infoUser'));
+       
+        if(infoUser){
+            auth((infoUser.payload))
+        }
+
+    },[])
+
     return (<InputsContainer>
     
         <form onSubmit={onSubmitForm}>
