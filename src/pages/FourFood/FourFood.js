@@ -26,12 +26,12 @@ const FourFood =  () => {
     restaurants.map((local, index)=>{
         return(
             <Card 
-            key={index}
-            image={local.logoUrl}
-            name={local.name}
-            id={local.id}
-            delivery={local.deliveryTime}
-            shippingPrice={local.shipping}
+                key={index}
+                image={local.logoUrl}
+                name={local.name}
+                id={local.id}
+                delivery={local.deliveryTime}
+                shippingPrice={local.shipping}
             />
         )
     })
