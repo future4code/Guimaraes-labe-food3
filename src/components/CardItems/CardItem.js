@@ -4,14 +4,21 @@ import { CardItemsContainer, Rectangle } from './styles'
 
 import logo from '../../assets/image.jpg'
 
+import { getRestaurantDetail } from '../../Services/services'
+import { useParams } from "react-router-dom"
+
 const CardItem = () => {
 
     const [quantity, setQuantity]  = useState(0)
 
+    const { id } = useParams();
+
+    console.log("res id", id)
+
     const handleQuantity = () =>{
         setQuantity( quantity +1)
     }
- 
+
     return(
     <CardItemsContainer className="restaurante-card">   
             <Rectangle>
