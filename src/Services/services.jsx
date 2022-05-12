@@ -7,24 +7,29 @@ export const getRestaurant = (url, initialState) => {
   const [restaurants, setRestaurants] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const [category, setCategory] = useState([])
 
   const { states, setters } =  useContext(GlobalStateContext); 
 
+  const token = states.infoUser.token
+
   useEffect(() => {
 
-    const token = states.token
-
-    console.log("token na services", states.token)
-
-    const fetch = async () => {
+     const fetch = async () => {
       setLoading(true);
       try {
         const  {data} = await axios.get(url,  { headers: {
           'Content-Type': 'application/json',
           auth: token
       }});
+      const newArrayCategory = []
      setRestaurants(data.restaurants) 
-     console.log("restaurantes",data.restaurants)
+for(let restaurant of data.restaurants){
+  const newCategory = restaurant.category
+  newArrayCategory.push(newCategory)
+}
+setCategory(newArrayCategory)
+
       } catch (err) {
         setError(err);
         console.log("erro", err.response.data.message)
@@ -35,7 +40,7 @@ export const getRestaurant = (url, initialState) => {
     fetch();
   }, []);
 
-  return [restaurants, loading, error];
+  return [restaurants, loading, error, category ];
 };
 
 export const useRequestOrders = (url, initialState) => {

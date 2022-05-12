@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Card from '../../components/Card/Card'
-import Filtro from '../../components/Filtro/Filtro'
+/* import Filtro from '../../components/Filtro/Filtro' */
 import Footer from '../../components/Footer/Footer'
 import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
@@ -11,13 +11,15 @@ import {
         FourFoodHeader, 
         FourFoodContainer, 
         FourFoodSearch,
-        FourFoodFooter
+        FourFoodFooter,
+        FiltroContainer,
+
 } from './styles'
 
 
 const FourFood =  () => {
 
-    const [restaurants, loading, error] = getRestaurant(`${BASE_URL}/restaurants`, []);
+    const [restaurants, loading, error, category] = getRestaurant(`${BASE_URL}/restaurants`, []);
 
     const cardRestaurant =
     restaurants && 
@@ -34,7 +36,17 @@ const FourFood =  () => {
         )
     })
 
- console.log('restaurantes', restaurants)
+    const cardCategory = 
+    category &&
+    category.map((cat)=>{
+        return (
+            <FiltroContainer>
+                 <ul><li>{cat}</li></ul>
+
+            </FiltroContainer>
+          
+        )
+    })
 
     return(<>
         <FourFoodHeader>
@@ -46,7 +58,7 @@ const FourFood =  () => {
         </FourFoodSearch>
        
         <FourFoodContainer>
-            <Filtro />
+      {cardCategory} 
         </FourFoodContainer>
         
         <FourFoodCardContainer>
