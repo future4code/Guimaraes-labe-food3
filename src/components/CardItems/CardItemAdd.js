@@ -17,11 +17,6 @@ export const CardItemAdd = () => {
     const [item , setItem] = useState(0);
     const options = [0,1,2,3,4,5,6,7,8,9,10]
 
-    const handleQuantity = () =>{        
-        setShowPopUp(true);
-    }
-
-
     const onChangeItem = (event) => {
       event.persist();
       setItem(event.target.value)
@@ -31,15 +26,10 @@ export const CardItemAdd = () => {
       setShowPopUp(false)
       setQuantity(item)
 
-      
-    const handleQuantity = () =>{
-      if (quantity > 0) {
-        setQuantity(quantity - 1)
-      }
-      else{
-        alert('Não é possível diminuir a quantidade')
-      } 
+    }
 
+    const handleQuantity = () =>{
+      setShowPopUp(true)
     }
 
 
@@ -54,7 +44,7 @@ export const CardItemAdd = () => {
                 <span className="title-normal">Bullguer</span>
                 <span className="items-bullguer">Pão, carne, queijo, picles e molho</span>
                 <span className="price-add">R$ 20,00</span>       
-              <button className="button-add" onClick={handleQuantity}>{quantity != 0? 'remover' : 'adicionar'}</button>
+              <button className="button-add" onClick={() => handleQuantity()}>{quantity != 0? 'remover' : 'adicionar'}</button>
             </div>
         </Rectangle>
 
@@ -79,5 +69,4 @@ export const CardItemAdd = () => {
         
       </CardItemsContainer>
   )
-}
 }

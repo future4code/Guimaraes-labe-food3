@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { GlobalStateContext } from "../Context/GlobalStateContext";
+import { BASE_URL } from "../constant/urls";
 
 
 export const getRestaurant = (url, initialState) => {
@@ -41,17 +42,23 @@ setCategory(newArrayCategory)
 setRestaurants(data.restaurants) 
 setFilter(data.restaurants)
 
-      } catch (err) {
+        setCategory(newArrayCategory)
+
+      }catch (err){
         setError(err);
         console.log("erro", err.response.data.message)
       } finally {
         setLoading(false);
       }
+
     };
+
     fetch();
+
   }, []);
 
   return [restaurants, loading, error, category, setRestaurants, filter, setFilter ];
+
 };
 
 export const useRequestOrders = (url, initialState) => {
@@ -86,4 +93,37 @@ export const useRequestOrders = (url, initialState) => {
     return [orders, loading, error];
     
   };
-  
+
+
+
+export const getRestaurantDetail = (id) =>{
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState();
+    const { states, setters } =  useContext(GlobalStateContext); 
+
+  useEffect(()=>{
+      setLoading(true)
+
+      const fetch = async () => {
+        try{
+          const { response } = await axios.get(`${BASE_URL}/${id}`, { 
+            headers: { 
+              'Content-Type': 'application/json',
+              auth: states.infoUser.token
+            }
+          })  
+          
+          console.log("Restaurante", response)
+          // setters.setProduct()
+
+        }catch(error){
+          setError(error)
+        }
+      }
+
+    fetch();
+      
+
+    },[])
+}
+
