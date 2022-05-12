@@ -11,7 +11,9 @@ export const getRestaurant = (url, initialState) => {
   const [filter, setFilter] = useState(restaurants)
 
   const { states, setters } =  useContext(GlobalStateContext); 
+console.log("lista de restaurantes", restaurants)
 
+console.log("lista de categorias", category)
   const token = states.infoUser.token
 
   useEffect(() => {
@@ -23,14 +25,21 @@ export const getRestaurant = (url, initialState) => {
           'Content-Type': 'application/json',
           auth: token
       }});
+
       const newArrayCategory = []
-     setRestaurants(data.restaurants) 
-     setFilter(data.restaurants)
-for(let restaurant of data.restaurants){
+
+/* for(let restaurant of data.restaurants){
   const newCategory = restaurant.category
   newArrayCategory.push(newCategory)
-}
+}  */
+for(let restaurant of data.restaurants){
+  const newCategory = restaurant.category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+  newArrayCategory.push(newCategory)
+  console.log("categorias sem acentos", newCategory)
+} 
 setCategory(newArrayCategory)
+setRestaurants(data.restaurants) 
+setFilter(data.restaurants)
 
       } catch (err) {
         setError(err);
