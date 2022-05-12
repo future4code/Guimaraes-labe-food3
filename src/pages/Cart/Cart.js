@@ -4,10 +4,16 @@ import AddressContent from './AddressContent'
 import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
 import Footer from '../../components/Footer/Footer'
 import { Button } from "@material-ui/core";
+import { useParams } from 'react-router-dom'
 
 
 
 const Cart = () => {
+
+    const { id } = useParams()
+
+    console.log("Id", id);
+    
   return (
     <CartContainer>
       <h3>Meu Carrinho</h3>
