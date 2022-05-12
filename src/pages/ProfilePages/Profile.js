@@ -25,9 +25,9 @@ const Profile = () => {
         {
             orders && orders.map(() => {
                 return (<>
-                    <ContainerPedidosH2>{orders.data.restaurant}</ContainerPedidosH2>
-                    <Data> {orders.data.data}</Data>
-                    <ContainerPedidosH3>Subtotal: {orders.data.price}</ContainerPedidosH3>
+                    <ContainerPedidosH2>Local pedido</ContainerPedidosH2>
+                    <Data> 01 Janeiro 2020</Data>
+                    <ContainerPedidosH3>Subtotal: R$67,00</ContainerPedidosH3>
                 </>
                 )
             })
