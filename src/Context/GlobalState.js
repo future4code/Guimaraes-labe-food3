@@ -6,11 +6,13 @@ const GlobalState = (props) => {
 
     const [infoUser, setInfoUser]= useState({})
     const [hasAddress, setHasAddress] = useState(false)
-    const [tokenUser, setTokenUser] = useState({})
+    const [restaurant, setRestaurant] = useState([])
+    const [token, setToken] = useState()
+
     
 
-    const states = { infoUser, hasAddress,tokenUser }
-    const setters = { setInfoUser, setHasAddress,setTokenUser }
+    const states = { infoUser, hasAddress, restaurant, token }
+    const setters = { setInfoUser, setHasAddress, setRestaurant,setToken }
 
 return(
     <GlobalStateContext.Provider value={{ states, setters }}>

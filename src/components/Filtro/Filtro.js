@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getRestaurant } from '../../Services/services';
 
 import { FiltroContainer } from "./styles";
 
@@ -12,15 +11,15 @@ const Filtro = () => {
         {id: 5, categoria: "Brasileira"}
     ]);
 
-    useEffect(()=>{
+  /*   useEffect(()=>{
         category();
     },[])
-
+ */
     const category = async () =>{
         const infoUser = JSON.parse(localStorage.getItem('infoUser'));
         const token = infoUser.token;
         console.log("Token", infoUser);
-        let data = await getRestaurant(token);
+      /*   let data = await getRestaurant(token); */
     }
 
     return(<FiltroContainer className="filtro">

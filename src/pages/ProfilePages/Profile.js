@@ -43,7 +43,7 @@ const Profile = () => {
                 <ProfileH1>{infoUser.data.name}</ProfileH1>
                 <ProfileH1>{infoUser.data.email}</ProfileH1>
                 <ProfileH1>{infoUser.data.cpf}</ProfileH1>
-                <Edit> <EditIco /></Edit>
+                <EditAdress onClick={() => goTOEditProfile(navigate)}> <EditIco /></EditAdress>
             </Profiles>
             <Endereco>
                 <EnderecoH1C>Endereço cadastrado</EnderecoH1C>
@@ -57,7 +57,7 @@ const Profile = () => {
                 <>
                     {loading && <CircularProgress />}
                     {!loading && orders && orders.length > 0 && ordersList}
-                    {!loading && orders && orders.length === 0 && (
+                    {!loading && orders && orders.length === 0 && ( 
                         <h2> Você não tem nenhum pedido</h2>
                     )}
                 </>

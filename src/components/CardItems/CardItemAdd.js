@@ -31,6 +31,15 @@ export const CardItemAdd = () => {
       setShowPopUp(false)
       setQuantity(item)
 
+      
+    const handleQuantity = () =>{
+      if (quantity > 0) {
+        setQuantity(quantity - 1)
+      }
+      else{
+        alert('Não é possível diminuir a quantidade')
+      } 
+
     }
 
 
