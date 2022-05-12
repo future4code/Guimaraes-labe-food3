@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
     padding: 0 0 16px;
 
     .image{
-        width: 328px;
+        width: 100%;
         height: 120px;
         margin: 5px 0 12px;
         object-fit: contain;

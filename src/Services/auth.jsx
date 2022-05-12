@@ -10,7 +10,8 @@ export const login = async (payload) => (
             let data = {
                 data: response.data.user,
                 status: response.status,
-                token: response.data.token
+                token: response.data.token,
+                payload: payload
             }
             return { data }
         }

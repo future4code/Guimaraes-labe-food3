@@ -8,6 +8,11 @@ const Filtro = () => {
         {id: 2, categoria: "Asiática"}, 
         {id: 3, categoria: "Massas"},
         {id: 4, categoria: "Saudável"},
+        {id: 5, categoria: "Brasileira"},
+        {id: 1, categoria: "Burger"}, 
+        {id: 2, categoria: "Asiática"}, 
+        {id: 3, categoria: "Massas"},
+        {id: 4, categoria: "Saudável"},
         {id: 5, categoria: "Brasileira"}
     ]);
 
