@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
@@ -11,13 +11,15 @@ import {
         FourFoodHeader, 
         FourFoodContainer, 
         FourFoodSearch,
-        FourFoodFooter
+        FourFoodFooter,
+        FiltroContainer,
+
 } from './styles'
 
 
 const FourFood =  () => {
 
-    const [restaurants, loading, error] = getRestaurant(`${BASE_URL}/restaurants`, []);
+    const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
 
     const cardRestaurant =
     restaurants && 
@@ -34,19 +36,21 @@ const FourFood =  () => {
         )
     })
 
- console.log('restaurantes', restaurants)
-
     return(<>
         <FourFoodHeader>
             <h5 className='FourFood-header'>FourFood</h5>
         </FourFoodHeader>
         
         <FourFoodSearch>
-            <Search />
+            <Search 
+            filter = {[filter, setFilter, setRestaurants]}
+            />
         </FourFoodSearch>
        
         <FourFoodContainer>
-            <Filtro />
+     <Filtro category={category}
+     filter = {[filter, setFilter, setRestaurants]}
+     />
         </FourFoodContainer>
         
         <FourFoodCardContainer>

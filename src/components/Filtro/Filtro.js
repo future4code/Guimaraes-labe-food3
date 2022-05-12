@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 
 import { FiltroContainer } from "./styles";
 
-const Filtro = () => {
-    const [search, setSearch] = useState([
-        {id: 1, categoria: "Burger"}, 
-        {id: 2, categoria: "Asiática"}, 
-        {id: 3, categoria: "Massas"},
-        {id: 4, categoria: "Saudável"},
-        {id: 5, categoria: "Brasileira"},
-        {id: 1, categoria: "Burger"}, 
-        {id: 2, categoria: "Asiática"}, 
-        {id: 3, categoria: "Massas"},
-        {id: 4, categoria: "Saudável"},
-        {id: 5, categoria: "Brasileira"}
-    ]);
+const Filtro = (props) => {
 
-  /*   useEffect(()=>{
-        category();
-    },[])
- */
-    const category = async () =>{
-        const infoUser = JSON.parse(localStorage.getItem('infoUser'));
-        const token = infoUser.token;
-        console.log("Token", infoUser);
-      /*   let data = await getRestaurant(token); */
+    const [category, setFilter, setRestaurants] = props.filter
+    
+    const filterRestaurant = (cat) =>{
+        const updatedList = category.filter((x) => x.category === cat);
+        setRestaurants(updatedList)
     }
 
+    const categoryFilter = props.category.map((category, index)=> <ul onClick={()=>filterRestaurant(category)} key={index}><li>{category}</li></ul> )
+
     return(<FiltroContainer className="filtro">
-        {search.map((s,index)=>{
-            return(<ul>
-                <li key={s.id}>{s.categoria}</li>
-            </ul>)
-        })}
+        {categoryFilter}
     </FiltroContainer>)
 }
 
