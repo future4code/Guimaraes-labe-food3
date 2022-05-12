@@ -77,4 +77,31 @@ export const useRequestOrders = (url, initialState) => {
     return [orders, loading, error];
     
   };
-  
+
+  export const orderHistory = (url, initialState) => {
+      
+      const { states, setters } =  useContext(GlobalStateContext);
+      const [orders, setOrders] = useState(initialState);
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState();
+      const token = states.token
+      useEffect(() => {
+        const fetch = async () => {
+          setLoading(true);
+          try {
+            const { orders } = await axios.get(url,  { headers: {
+              'Content-Type': 'application/json',
+              auth: token
+          }});
+            setOrders(orders.data);
+          } catch (err) {
+            setError(err);
+          } finally {
+            setLoading(false);
+          }
+        };
+        fetch();
+      }, []);
+      return [orders, loading, error];
+    };
+    

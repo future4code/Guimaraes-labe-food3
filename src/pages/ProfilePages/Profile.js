@@ -10,6 +10,7 @@ import axios from "axios";
 import { BASE_URL } from "../../constant/urls";
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useRequestOrders } from '../../Services/services';
+import { orderHistory } from '../../Services/services';
 
 
 const Profile = () => {
@@ -24,9 +25,9 @@ const Profile = () => {
         {
             orders && orders.map(() => {
                 return (<>
-                    <ContainerPedidosH2>Local pedido</ContainerPedidosH2>
-                    <Data> 01 Janeiro 2020</Data>
-                    <ContainerPedidosH3>Subtotal: R$67,00</ContainerPedidosH3>
+                    <ContainerPedidosH2>{orders.data.restaurant}</ContainerPedidosH2>
+                    <Data> {orders.data.data}</Data>
+                    <ContainerPedidosH3>Subtotal: {orders.data.price}</ContainerPedidosH3>
                 </>
                 )
             })
