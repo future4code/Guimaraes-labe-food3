@@ -10,7 +10,7 @@ const Search = (props) => {
     return(
  
         <TextField className="search"
-            label={'Search'}
+            label={'Restaurante'}
             variant={'outlined'}
             InputProps={{
                 endAdornment: (
