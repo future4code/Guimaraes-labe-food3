@@ -5,7 +5,7 @@ export const CardItemsContainer = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 0 0 16px;
-    width: 80vw;
+/*     width: 50vw; */
     max-width: 450px;
 
 img{
@@ -27,7 +27,7 @@ img{
         color: #E8222E;
     }
       
-        .items-bullguer{
+        .description{
             height: 18px;
             margin: 4px 8px 0 16px;
             font-family: Roboto;

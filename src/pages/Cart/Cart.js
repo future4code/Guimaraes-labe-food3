@@ -30,15 +30,15 @@ const Cart = () => {
         <span> Forma de pagamento </span>
         <div> <hr/></div>
         <form>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-          <label class="form-check-label" for="flexRadioDefault1">
+        <div className="form-check">
+          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+          <label className="form-check-label" for="flexRadioDefault1">
             Dinheiro
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-          <label class="form-check-label" for="flexRadioDefault2">
+        <div className="form-check">
+          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+          <label className="form-check-label" for="flexRadioDefault2">
             Cartão de Crédito
           </label>
         </div>

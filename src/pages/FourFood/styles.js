@@ -6,11 +6,8 @@ export const FourFoodCardContainer = styled.div`
     align-items: center;
     width: 100%;
     height: 640px;
-    overflow-y: auto;
+    overflow-x: auto;
 
-    ::-webkit-scrollbar {
-        display: none;
-    }
     .FourFood-header{
         border-bottom: 1px solid var(--grey);
         width: 100%;
@@ -32,14 +29,6 @@ export const FourFoodHeader = styled.div`
     .FourFood-header{
     }
 `;
-export const FourFoodContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-`;
-
 export const FourFoodSearch = styled.div`
     display: flex;
     justify-content: center;

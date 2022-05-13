@@ -8,7 +8,14 @@ export const FiltroContainer = styled.div`
     height: 42px;
     margin: 8px 0 0;
 
-    overflow-x:auto;
+    overflow: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    background: transparent;
+  }
 
     ul{
         margin-right: 10px;
@@ -32,10 +39,5 @@ export const FiltroContainer = styled.div`
        color: var(--blue);
        cursor: pointer;
    }
-
-   ::-webkit-scrollbar {
-        display: hidden;
-    }
-
 
 `; 
