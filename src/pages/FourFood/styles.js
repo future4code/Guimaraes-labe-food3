@@ -32,14 +32,6 @@ export const FourFoodHeader = styled.div`
     .FourFood-header{
     }
 `;
-export const FourFoodContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-`;
-
 export const FourFoodSearch = styled.div`
     display: flex;
     justify-content: center;
