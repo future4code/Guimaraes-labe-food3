@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
-import { GlobalStateContext } from "../Context/GlobalStateContext";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import { GlobalStateContext } from '../Context/GlobalStateContext';
+import { useParams } from 'react-router-dom'
 
 
 export const getRestaurant = (url, initialState) => {
@@ -11,7 +12,7 @@ export const getRestaurant = (url, initialState) => {
   const [filter, setFilter] = useState(restaurants)
 
   const { states, setters } = useContext(GlobalStateContext);
-
+/* console.log('lista restaurantes', restaurants) */
   const token = states.infoUser.token
 
   useEffect(() => {
@@ -49,6 +50,9 @@ export const getRestaurant = (url, initialState) => {
   return [restaurants, loading, error, category, setRestaurants, filter, setFilter];
 };
 
+
+
+
 export const useRequestOrders = (url, initialState) => {
 
   const { states, setters } = useContext(GlobalStateContext);
@@ -81,5 +85,48 @@ export const useRequestOrders = (url, initialState) => {
   }, []);
 
   return [orders, loading, error];
+
+};
+
+
+
+
+export const getRestaurantDetail = (initialState) => {
+
+  
+  const { id } = useParams();
+
+  const { states, setters } = useContext(GlobalStateContext);
+
+  const [restaurantDetails, setRestaurantDetails] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+
+  
+  useEffect(() => {
+
+    const token = states.infoUser.token
+
+    const fetch = async () => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get(`https://us-central1-missao-newton.cloudfunctions.net/fourFoodA/restaurants/${id}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            auth: token
+          }
+        });
+        console.log('lista de produtos',data.restaurant.products)
+        setRestaurantDetails(data.restaurant.products); 
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetch();
+  }, []);
+
+  return [restaurantDetails, loading, error];
 
 };

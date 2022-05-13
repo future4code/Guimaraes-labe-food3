@@ -6,11 +6,8 @@ import {
     TotalItens
   } from './styles'
 
-  import { SelectField, MenuItem } from "material-ui"
 
-import logo from '../../assets/image.jpg'
-
-export const CardItemAdd = () => {
+export const CardItemAdd = (props) => {
     
     const [quantity, setQuantity]  = useState(0)
     const [showPopUp, setShowPopUp] = useState(false);
@@ -37,13 +34,13 @@ export const CardItemAdd = () => {
     <CardItemsContainer>
        <Rectangle>
             <div className="container-image">
-            <img src={logo}/> 
+            <img src={props.image}/> 
             </div>       
             <div className="info-items">
               { quantity != 0 && <button className="button-quantity">{quantity}</button> }
-                <span className="title-normal">Bullguer</span>
-                <span className="items-bullguer">Pão, carne, queijo, picles e molho</span>
-                <span className="price-add">R$ 20,00</span>       
+                <span className="title-normal">{props.name}</span>
+                <span className="description">{props.description}</span>
+                <span className="price-add">R${props.price}</span>       
               <button className="button-add" onClick={() => handleQuantity()}>{quantity != 0? 'remover' : 'adicionar'}</button>
             </div>
         </Rectangle>
@@ -66,7 +63,7 @@ export const CardItemAdd = () => {
 
       </TotalItens>
       }
-        
+     
       </CardItemsContainer>
   )
 }
