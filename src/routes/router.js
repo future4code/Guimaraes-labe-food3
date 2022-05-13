@@ -8,6 +8,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Cart  from "../pages/Cart/Cart.js";
 import Profile from "../pages/ProfilePages/Profile";
 import EditProfile from "../pages/ProfilePages/EditProfile";
+import Restaurants from "../pages/Restaurants/Restaurants";
 
 const Router = () => {
     return(
@@ -21,6 +22,7 @@ const Router = () => {
                 <Route path="/cart/:id" element={<Cart/>} />
                 <Route path="/profile" element={<Profile/>} />
                 <Route path="/editprofile" element={<EditProfile/>} />
+                <Route path="/restaurant/:id" element={<Restaurants/>} />
             </Routes>
         </BrowserRouter>
     )

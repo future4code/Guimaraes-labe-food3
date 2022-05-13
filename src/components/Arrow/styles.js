@@ -14,10 +14,14 @@ export const ArrowContainer = styled.div`
         margin-left: 1em;
     }
 
-    hr{
-        width: 100%;
-    }
     .arrow-back-ios:hover{
         cursor: pointer;
+    }
+
+    span{
+        display: flex;
+        margin: 0 auto;
+
+        margin-top: -1.4rem;
     }
 `
