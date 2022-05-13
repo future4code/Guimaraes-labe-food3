@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { GlobalStateContext } from '../Context/GlobalStateContext';
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { GlobalStateContext } from "../Context/GlobalStateContext";
+import { BASE_URL } from "../constant/urls";
 
 
 export const getRestaurant = (url, initialState) => {
@@ -12,7 +12,7 @@ export const getRestaurant = (url, initialState) => {
   const [filter, setFilter] = useState(restaurants)
 
   const { states, setters } = useContext(GlobalStateContext);
-/* console.log('lista restaurantes', restaurants) */
+
   const token = states.infoUser.token
 
   useEffect(() => {
@@ -50,9 +50,6 @@ export const getRestaurant = (url, initialState) => {
   return [restaurants, loading, error, category, setRestaurants, filter, setFilter];
 };
 
-
-
-
 export const useRequestOrders = (url, initialState) => {
 
   const { states, setters } = useContext(GlobalStateContext);
@@ -89,37 +86,30 @@ export const useRequestOrders = (url, initialState) => {
 };
 
 
-
-
-export const getRestaurantDetail = (initialState) => {
-
-  
-  const { id } = useParams();
-
+export const getRestaurantDetail = (initialState, path) => {
   const { states, setters } = useContext(GlobalStateContext);
 
-  const [restaurantDetails, setRestaurantDetails] = useState(initialState);
+  const token = states.infoUser.token
+
+  const [data, setData] = useState(initialState);
+
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
 
-  
   useEffect(() => {
-
-    const token = states.infoUser.token
 
     const fetch = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`https://us-central1-missao-newton.cloudfunctions.net/fourFoodA/restaurants/${id}`, {
+        const { data } = await axios.get(`${BASE_URL}${path}`, {
           headers: {
             'Content-Type': 'application/json',
             auth: token
           }
         });
-        console.log('lista de produtos',data.restaurant.products)
-        setRestaurantDetails(data.restaurant.products); 
+        setData(data);
+          setLoading(false);
       } catch (err) {
-        setError(err);
+        window.alert('Erro', err.response.data.message)
       } finally {
         setLoading(false);
       }
@@ -127,6 +117,5 @@ export const getRestaurantDetail = (initialState) => {
     fetch();
   }, []);
 
-  return [restaurantDetails, loading, error];
-
+return { data, loading };
 };

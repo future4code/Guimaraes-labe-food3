@@ -17,8 +17,8 @@ const Card = (props) => {
             <span className="card-restaturante-text-style-3">{props.name}</span>
             
             <div className="info-entrega">
-                    <span className="tempo-de-entrega">Entrega {props.delivery} min</span>
-                <span className="taxa-de-entrega">Frete R$ {props.shippingPrice},00</span>
+                    <span className="tempo-de-entrega">Entrega  {Math.floor(props.delivery * 0.9)} - {props.delivery} min</span>
+                <span className="taxa-de-entrega">Frete R${/*  {props.shippingPrice},00  */} {Number(props.shippingPrice).toFixed(2)}</span>
             </div>
         </Rectangle>
     </CardContainer>);

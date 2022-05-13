@@ -6,11 +6,8 @@ export const FourFoodCardContainer = styled.div`
     align-items: center;
     width: 100%;
     height: 640px;
-    overflow-y: auto;
+    overflow-x: auto;
 
-    ::-webkit-scrollbar {
-        display: none;
-    }
     .FourFood-header{
         border-bottom: 1px solid var(--grey);
         width: 100%;

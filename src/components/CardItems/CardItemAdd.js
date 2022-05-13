@@ -7,7 +7,7 @@ import {
   } from './styles'
 
 
-export const CardItemAdd = (props) => {
+export const CardItemAdd = (product) => {
     
     const [quantity, setQuantity]  = useState(0)
     const [showPopUp, setShowPopUp] = useState(false);
@@ -28,19 +28,19 @@ export const CardItemAdd = (props) => {
     const handleQuantity = () =>{
       setShowPopUp(true)
     }
-
+console.log("props recebida", product )
 
   return (
     <CardItemsContainer>
        <Rectangle>
             <div className="container-image">
-            <img src={props.image}/> 
+            <img src={product.product.photoUrl} /> 
             </div>       
             <div className="info-items">
               { quantity != 0 && <button className="button-quantity">{quantity}</button> }
-                <span className="title-normal">{props.name}</span>
-                <span className="description">{props.description}</span>
-                <span className="price-add">R${props.price}</span>       
+           <span className="title-normal">{product.product.name}</span>
+                <span className="description">{product.product.description}</span>
+                <span className="price-add">R$ {Number(product.product.price).toFixed(2)}</span>      
               <button className="button-add" onClick={() => handleQuantity()}>{quantity != 0? 'remover' : 'adicionar'}</button>
             </div>
         </Rectangle>
