@@ -1,64 +1,78 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
 import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
 import { getRestaurant } from '../../Services/services'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-import { 
-        FourFoodCardContainer, 
-        FourFoodHeader, 
-        FourFoodContainer, 
-        FourFoodSearch,
-        FourFoodFooter,
-        FiltroContainer,
+import {
+    FourFoodCardContainer,
+    FourFoodHeader,
+    FourFoodSearch,
+    FourFoodFooter,
 
 } from './styles'
 
-
-const FourFood =  () => {
+const FourFood = () => {
 
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
 
-    const cardRestaurant =
-    restaurants && 
-    restaurants.map((local, index)=>{
-        return(
-            <Card 
-                key={index}
-                image={local.logoUrl}
-                name={local.name}
-                id={local.id}
-                delivery={local.deliveryTime}
-                shippingPrice={local.shipping}
-            />
-        )
-    })
+    const [input, setInput] = useState("")
 
-    return(<>
+    const onChangeInput = (ev) => {
+        setInput(ev.target.value)
+    }
+
+    const showRestaurant =
+        restaurants &&
+        restaurants.filter(rest => {
+            return rest.name.toLowerCase().includes(input.toLowerCase())
+        })
+            .map((rest, index) => {
+                return (<div  key={index}>
+                    <Filtro
+                    category={category}
+                    filter={[filter, setFilter, setRestaurants]}
+                    />
+                    <Card
+                    image={rest.logoUrl}
+                    name={rest.name}
+                    id={rest.id}
+                    delivery={rest.deliveryTime}
+                    shippingPrice={rest.shipping}
+                    />
+                </div>
+                )
+            })
+
+    return (<>
         <FourFoodHeader>
             <h5 className='FourFood-header'>FourFood</h5>
         </FourFoodHeader>
-        
+
         <FourFoodSearch>
-            <Search 
-            filter = {[filter, setFilter, setRestaurants]}
+            <Search
+                input={input}
+                onChangeInput={onChangeInput}
             />
         </FourFoodSearch>
-       
-        <FourFoodContainer>
-     <Filtro category={category}
-     filter = {[filter, setFilter, setRestaurants]}
-     />
-        </FourFoodContainer>
-        
+
         <FourFoodCardContainer>
-            {cardRestaurant}
+
+            <>
+                {loading && <CircularProgress />}
+                {!loading && restaurants && restaurants.length > 0 && showRestaurant}
+                {!loading && restaurants && restaurants.length === 0 && (
+                    <h2> Não Há Restaurantes na Lista</h2>
+                )}
+            </>
+
         </FourFoodCardContainer>
         <FourFoodFooter>
             <Footer />
-        </FourFoodFooter>        
+        </FourFoodFooter>
     </>
     )
 }

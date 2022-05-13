@@ -1,34 +1,21 @@
 import { IconButton, InputAdornment, TextField } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
-import React, {useState} from "react";
+import React  from "react";
 
 const Search = (props) => {
 
-  const [category, setFilter, setRestaurants] = props.filter
-    
-  const [input, setInput] = useState("")
-
-  const onChangeInput = (ev)=>{
-    setInput(ev.target.value)
-  }
-
-  const onClickSearch = () =>{
-    const updatedList = category.filter((cat) =>{
-      return cat.category.toLowerCase().includes(input.toLowerCase())
-    });
- /*    updatedList.normalize("NFD").replace(/[\u300-\u036f]/g, " ")
-    console.log("lista atualizada", updatedList) */
-    setRestaurants(updatedList)
-    };
+  const input = props.input
+  const onChangeInput = props.onChangeInput
 
     return(
+ 
         <TextField className="search"
-            label={'Search'}
+            label={'Restaurante'}
             variant={'outlined'}
             InputProps={{
                 endAdornment: (
                   <InputAdornment>
-                    <IconButton onClick={()=> onClickSearch()}>
+                    <IconButton>
                       <SearchOutlined />
                     </IconButton>
                   </InputAdornment>
@@ -36,7 +23,7 @@ const Search = (props) => {
             }}
             value={input}
             onChange={onChangeInput}
-        />
+        /> 
     )
 }
 

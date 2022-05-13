@@ -1,74 +1,91 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Arrow from "../../components/Arrow/Arrow";
 import Header from "../../components/Header/Header";
 import { goToFourFood } from "../../routes/coordinator";
-import logo  from '../../assets/image_2022-05-13/image.png'
-import burger  from '../../assets/burgger/burgger.jpg'
+import logo from '../../assets/image_2022-05-13/image.png'
+import burger from '../../assets/burgger/burgger.jpg'
+import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
+import { getRestaurantDetail } from "../../Services/services";
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Footer from "../../components/Footer/Footer";
 
-
-import { 
-    RestaurantConteiner,
-    RestaurantDetails
+import {
+  RestaurantConteiner,
+  CardContainer,
+  Rectangle,
+  FourFoodFooter,
 
 } from "./styles";
 
-const Restaurants = () => { 
-    const navegate = useNavigate()
+const Restaurants = () => {
+  const navegate = useNavigate()
 
-    return(<RestaurantConteiner>
-        <Arrow onClick={()=> goToFourFood(navegate)} showTitle={true} title={'Restaurante'}/>       
-        
-        <RestaurantDetails>
-            <img className="restaurante-logo" src={logo} />
-            <div className="restaurante-text">
-                <span>Bullquer vila Madalena</span>                
-            </div>
+  const param = useParams()
+  const { data, loading } = getRestaurantDetail({}, `/restaurants/${param.id}`)
 
-            <div className="restaurante-buger">
-                <span>Burger</span>                
-            </div>
 
-            <div className="restaurante-min-frete">
-                <span className="restaurante-tempo-entrega">50 - 60 min</span>
-                <span className="restaurante-frete">Frete R$ 6,00</span>
-            </div>
+  console.log('data recebido', data)
 
-            <div className="restaurante-address">
-                <span>R. Fradique Coutinho, 1136 - Vila Madalena</span>                
-            </div>
-            
-            <span className="restaurante-principais">Principais</span>
-            
-            <div className="restaurante-item-card">
-                <div className="item-card">
-                    <img className="item-card-img" src={burger}/>
-                    
-                    <div className="item-card-info">
+  const renderRestaurant = data.restaurant && (
+    <CardContainer className="restaurante-card">
+      <Rectangle>
+        <img className="image" src={data.restaurant.logoUrl} />
+        <span className="card-restaturante-text-style-3">{data.restaurant.name}</span>
+        <span className="description"> {data.restaurant.category}</span>
+        <div className="info-entrega">
+          <span className="description">Entrega  {Math.floor(data.restaurant.deliveryTime * 0.9)} - {data.restaurant.deliveryTime} min</span>
+          <span className="taxa-de-entrega">Frete R$ {Number(data.restaurant.shipping).toFixed(2)}</span>
+          <span className="description">{data.restaurant.address}</span>
+        </div>
+      </Rectangle>
+    </CardContainer>)
 
-                        <div className="item-card-name">
-                            <span>Bullger</span>    
-                        </div>  
+const renderProducts = (category) => {
+  return data.restaurant && data.restaurant.products.map((product) => {
+    if (product.category === category) {
+      return (
+        <CardItemAdd
+          key={product.id}
+          product={product}
+          quantity={product.quantity}
+        />
+      )
+    }
+  })
+}
 
-                        <div className="item-card-description">
-                            <span>Pão, carne. queijo, picles e molho.</span>    
-                        </div>   
+const categoriesList = data.restaurant && data.restaurant.products.map((product) => {
+  return product.category
+})
 
-                        <div className="item-card-value">
-                            <span>R$ 20,00</span>    
-                        </div> 
+const products = [...new Set(categoriesList)].map((category) => {
+  return (
+    
+    <CardContainer key={category} >
+      <h2>{category}</h2>
+      {renderProducts(category)}
+    </CardContainer>
+  )
+})
 
-                        <div className="item-card-button">
-                            <span>adicionar</span>    
-                        </div> 
 
-                    </div>
-                </div>
-            </div>
-        </RestaurantDetails>
+  return (
+  <>
+      <RestaurantConteiner>
+      <Arrow onClick={()=> goToFourFood(navegate)} showTitle={true} title={'Restaurante'}/>   
 
-    </RestaurantConteiner>
-    )
+    {loading && <CircularProgress />}
+    {!loading && renderRestaurant}
+    {products}
+  
+  </RestaurantConteiner>
+  <FourFoodFooter>
+            <Footer />
+        </FourFoodFooter>
+  </>
+
+  )
 }
 
 export default Restaurants;
