@@ -6,7 +6,6 @@ import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
 import { getActiveOrder, getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { GlobalStateContext } from '../../Context/GlobalState/GlobalStateContext'
 
 
 import {
@@ -22,15 +21,7 @@ const FourFood = () => {
 
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
-    const { states, setters } = useContext(GlobalStateContext)
 
-console.log('estados restaurante' , states.dataRestaurant)
-console.log('funcoes estados' , setters)
-
-useEffect(() => {
-
-    localStorage.setItem("cart", JSON.stringify(states.cart))
-  }, [states.cart])
 
     const onChangeInput = (ev) => {
         setInput(ev.target.value)
