@@ -24,9 +24,6 @@ const Restaurants = () => {
   const param = useParams()
   const { data, loading } = getRestaurantDetail({}, `/restaurants/${param.id}`)
 
-
-  console.log('data recebido', data)
-
   const renderRestaurant = data.restaurant && (
     <CardContainer className="restaurante-card">
       <Rectangle>

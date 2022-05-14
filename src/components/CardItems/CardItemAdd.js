@@ -36,8 +36,6 @@ export const CardItemAdd = (product) => {
       
     }
 
-console.log("props recebida", product )
-
   return (
     <CardItemsContainer>
        <Rectangle>

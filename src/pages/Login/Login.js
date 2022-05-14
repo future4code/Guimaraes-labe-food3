@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate} from 'react-router-dom'
 import { Button } from "@material-ui/core";
 import Header from "../../components/Header/Header";
+import useProtectedPage from "../../components/Hooks/useProtectPage";
 
 import {
     LoginContainer,
@@ -11,6 +12,7 @@ import { goToSignUp } from "../../routes/coordinator";
 import LoginForm from "./LoginForm";
 
 const Login = () => {
+    useProtectedPage()
     const navigate = useNavigate();
     return(
         <LoginContainer className="login-container">

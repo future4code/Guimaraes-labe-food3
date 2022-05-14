@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 import { message } from "../../utils/message";
-import { GlobalStateContext } from "../../Context/GlobalStateContext";
+import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext";
 
 const SignUpForm = () => {
     const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { Historico, HistoricoH1, ContainerPedidos, ContainerPedidosH2, Data, Con
 import Footer from '../../components/Footer/Footer';
 import { goTOEditProfile, goToAddress } from '../../routes/coordinator';
 import { useNavigate } from 'react-router-dom';
-import { GlobalStateContext } from '../../Context/GlobalStateContext';
+import { GlobalStateContext } from '../../Context/GlobalState/GlobalStateContext';
 import axios from "axios";
 import { BASE_URL } from "../../constant/urls";
 import CircularProgress from '@material-ui/core/CircularProgress'

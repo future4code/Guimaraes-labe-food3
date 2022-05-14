@@ -1,6 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalStateContext } from "../../Context/GlobalStateContext";
+import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { toast, ToastContainer } from 'react-toastify'

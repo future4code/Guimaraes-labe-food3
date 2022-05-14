@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
 import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
-import { getRestaurant } from '../../Services/services'
+import { getActiveOrder, getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { GlobalStateContext } from '../../Context/GlobalState/GlobalStateContext'
+
 
 import {
     FourFoodCardContainer,
@@ -14,12 +16,21 @@ import {
     FourFoodFooter,
 
 } from './styles'
+import { ActiveOrder } from '../../components/ActiveOrder/ActiveOrder'
 
 const FourFood = () => {
 
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
-
     const [input, setInput] = useState("")
+    const { states, setters } = useContext(GlobalStateContext)
+
+console.log('estados restaurante' , states.dataRestaurant)
+console.log('funcoes estados' , setters)
+
+useEffect(() => {
+
+    localStorage.setItem("cart", JSON.stringify(states.cart))
+  }, [states.cart])
 
     const onChangeInput = (ev) => {
         setInput(ev.target.value)
@@ -73,6 +84,7 @@ const FourFood = () => {
         <FourFoodFooter>
             <Footer />
         </FourFoodFooter>
+        {getActiveOrder? <ActiveOrder/>: ''}
     </>
     )
 }
