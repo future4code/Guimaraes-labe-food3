@@ -26,8 +26,16 @@ export const CardItemAdd = (product) => {
     }
 
     const handleQuantity = () =>{
-      setShowPopUp(true)
+
+      if(item){
+        setQuantity(0)
+        setItem(0)
+      }else{
+        setShowPopUp(true)
+      }
+      
     }
+
 console.log("props recebida", product )
 
   return (
