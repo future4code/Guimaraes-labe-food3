@@ -1,69 +1,77 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-
-export const Container = styled.div`
-display: flex;
-justify-content: center;
-  width: 100%;
-  min-height: 148px;
-  max-height: 148px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  font-family: Roboto;
-  justify-items:center;
- p{
-	 margin: 0px;
- }
-`;
-
-export const Img=styled.img`
-
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    display: flex;
-    justify-content: center;
+export const CardContainer = styled.div`
+   display: flex;
+    flex-direction: column;
     align-items: center;
-  `
+    width: 360px;
+    height: 196px;
+    padding: 0 0 16px;
 
-export const ContainerDetails = styled.article`
-  min-height: 268px;
-  max-height: 268px;
-  margin-top: 17.008px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-left: 16px;
-  margin-right: 16px;
-  box-sizing: border-box;
-  
+    .image{
+        width: 100%;
+        height: 120px;
+        margin: 5px 0 12px;
+        object-fit: contain;
+    }
+
+    .card-restaturante-text-style-3{
+        width: 296px;
+        height: 18px;
+        margin: 12px 4px 4px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: -0.39px;
+        color: #5cb646;
+    }
+
+    .info-entrega{
+        display: flex;  
+         
+        
+        .tempo-de-entrega {
+            margin-left: 4px;   
+            width: 148px;
+            height: 18px;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: -0.39px;
+            color: #b8b8b8;
+        }
+
+        .taxa-de-entrega {
+            width: 140px;
+            height: 18px;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: -0.39px;
+            text-align: right;
+            color: #b8b8b8;
+        }
+    }
 `;
-export const Name = styled.p`
-  width: 20.5rem;
-  height: 1.125rem;
-  font-size: 1rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
 
+
+export const Rectangle = styled.div`
+     width: 328px;
+    height: 188px;
+    padding: 0 0 16px;
+    border-radius: 8px;
+    border: solid 1px #b8b8b8;
+
+    .description{
+        margin-left: 4px;   
+}
 `;
-
-export const ContainerNumb = styled.div`
-  display: flex;
-  flex-direction: row;
-  p {
-    margin-right: 30px;
-  }
-`;
-export const Address=styled.p`
-margin:0px;
-
-`;
-
-export const Category=styled.p`
-
-`

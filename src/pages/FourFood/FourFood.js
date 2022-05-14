@@ -8,6 +8,7 @@ import { getActiveOrder, getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 
+
 import {
     FourFoodCardContainer,
     FourFoodHeader,
@@ -51,7 +52,7 @@ const FourFood = () => {
 
     return (<>
         <FourFoodHeader>
-            <h5 className='FourFood-header'>FourFood</h5>
+            <h2 className='FourFood-header'>FourFood</h2>
         </FourFoodHeader>
 
         <FourFoodSearch>

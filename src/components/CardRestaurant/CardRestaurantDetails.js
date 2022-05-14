@@ -1,12 +1,8 @@
 import React from "react";
 import {
-	Address,
-  Category,
-  Container,
-  ContainerDetails,
-  ContainerNumb,
-  Img,
-  Name
+  CardContainer,
+  Rectangle
+
 }  from './style'
 
 const CardRestaurantDetails = ({
@@ -18,26 +14,22 @@ const CardRestaurantDetails = ({
   address,
 }) => {
   return (
-    <div>
-      <ContainerDetails>
-       <Img src={image} alt="Logo Restaurante" />
-        <Container>
-          <Name>{name}</Name>
-          <Category>{category}</Category>
-          <ContainerNumb>
-       
-              <p>
-                {Math.floor(deliveryTime * 0.9)} - {deliveryTime} min
-              </p>
-	      <p>
-              Frete R$
-              {Number(shipping).toFixed(2)}
-	      </p>
-          </ContainerNumb>
-          <Address>{address}</Address>
-        </Container> 
-      </ContainerDetails>
-    </div>
+
+<CardContainer className="restaurante-card">
+        <Rectangle>
+            <img className="image" src={image} /> 
+            <span className="card-restaturante-text-style-3">{name}</span>
+            <div>
+              <span className="description"> {category}</span>       
+            </div>
+            <div className="info-entrega">
+                    <span className="tempo-de-entrega">Entrega  {Math.floor(deliveryTime * 0.9)} - {deliveryTime} min</span>
+                <span className="taxa-de-entrega">Frete R$ {Number(shipping).toFixed(2)}</span>
+            </div>
+            <span className="description"> {address}</span> 
+        </Rectangle>
+    </CardContainer>
+
   );
 };
 
