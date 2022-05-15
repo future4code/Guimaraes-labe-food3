@@ -11,7 +11,6 @@ const AddressContent = ({address}) => {
                 type="text"
                 name="Endereco de Entrega"
                 value=""
-                // onChange={(e) => setText(e.target.value)}
                 label="Endereço de Entrega"
                 variant="outlined"
                 fullWidth

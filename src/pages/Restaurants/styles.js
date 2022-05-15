@@ -64,4 +64,20 @@ export const ModalSelect = styled.div`
 
 export const StyledButton = styled(Button) `
     align-self: flex-end;
+
 `
+
+export const ContainerProducts = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 640px;
+    overflow-x: auto;
+    `
+    export const FourFoodFooter = styled.div`
+    display: flex;
+    justify-content: center;  
+    position: fixed;
+    bottom: 0;
+    `

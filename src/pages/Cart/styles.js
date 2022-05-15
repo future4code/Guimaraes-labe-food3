@@ -2,7 +2,12 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 640px;
+    overflow-x: auto;
   margin: 60px 0;
   font-family: "Roboto";
 `
@@ -122,9 +127,17 @@ export const AddressContentContentContainer = styled.div`
     flex-direction: column;
     width: 80vw;
     max-width: 450px;
+    margin-top: 2rem;
 
     align-items: center;
     justify-content: center;
     text-align: center;
     margin-bottom: 20px;
 `
+export const FourFoodFooter = styled.div`
+    display: flex;
+    justify-content: center;  
+    position: fixed;
+    bottom: 0;
+`
+

@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import AddressContent from './AddressContent'
 import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
 import Footer from '../../components/Footer/Footer'
 import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContext'
-import { goToFourFood } from '../../routes/coordinator';
+import { goToFourFood, goBack} from '../../routes/coordinator';
 import useForm from '../../hooks/useForm'
 import axios from 'axios'
 import Header from '../../components/Header/Header';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { BASE_URL } from '../../constant/urls'
+import Arrow from '../../components/Arrow/Arrow';
 
 
 
@@ -26,7 +27,8 @@ import {
   SubTotal,
   Total,
   TotalPrice,
-  AddressTitle
+  AddressTitle,
+  FourFoodFooter
 } from './styles'
 
 const Cart = () => {
@@ -94,6 +96,8 @@ console.log('form',form)
   return (
     <Container>
       {loading && <CircularProgress />}
+      <Arrow onClick={() => goBack(navigate)} showTitle={true} title={'Meu Carrinho'} /> 
+      
       <Header />
       <AddressContent
       address={infoUser.data.address}
@@ -165,7 +169,9 @@ console.log('form',form)
           </StyledButton>
         </form>
       </CartDetails>
+      <FourFoodFooter>
       <Footer />
+      </FourFoodFooter>  
     </Container>
   )
 }

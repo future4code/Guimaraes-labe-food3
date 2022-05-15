@@ -62,13 +62,13 @@ export const useRequestOrders = (url, initialState) => {
     const fetch = async () => {
       setLoading(true);
       try {
-        const { orders } = await axios.get(url, {
+        const {data } = await axios.get(url, {
           headers: {
             'Content-Type': 'application/json',
             auth: token
           }
         });
-        setOrders(orders.data);
+        setOrders(data);
       } catch (err) {
         setError(err);
       } finally {

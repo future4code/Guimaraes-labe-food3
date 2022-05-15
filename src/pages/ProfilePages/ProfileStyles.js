@@ -1,11 +1,11 @@
 import styledComponents from "styled-components";
 
 
-export const Header = styledComponents.header`
+export const HeaderStyle = styledComponents.header`
     background-color: white;
     color: black;
     text-align: center;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: regular;
     font-family: 'Roboto';
     border-bottom: 1px solid #B8B8B8;
@@ -163,4 +163,11 @@ export const ProfileContainer = styledComponents.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Roboto';
+    button{
+        background-color:  #E8222E;
+        border-radius: 10px;
+        height: 2.5rem;
+        color: #fff;
+    }
 `;

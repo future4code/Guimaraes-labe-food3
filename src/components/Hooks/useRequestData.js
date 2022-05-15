@@ -2,8 +2,8 @@ import axios from "axios";
 import { BASE_URL } from '../../constant/urls'
 import { useEffect, useState } from "react";
 
-const useRequestData = (initialData, path) => {
-    const [data, setData] = useState(initialData);
+const useRequestData = (initialState, path) => {
+    const [data, setData] = useState(initialState);
     const [loading, setLoading] = useState(false);
 
     const headers = {
@@ -26,7 +26,7 @@ const useRequestData = (initialData, path) => {
             }
         };
         fetch();
-    }, []);
+    }, [path]);
 
     return { data, loading };
 };

@@ -19,6 +19,7 @@ import {
   ContainerRestaurantsDetails,
   ModalSelect,
   StyledButton,
+  ContainerProducts,
 } from "./styles"
 
 import { getRestaurantDetail } from '../../Services/services';
@@ -122,7 +123,7 @@ const RestaurantPage = () => {
   })
 
   return (
-    <>
+    <ContainerProducts>
       <Arrow onClick={() => goToFourFood(navigate)} showTitle={true} title={'Restaurante'} />
       <Header />
       {loading && <CircularProgress />}
@@ -166,7 +167,7 @@ const RestaurantPage = () => {
         </ModalSelect>
       </ContainerModal>
 
-    </>
+    </ContainerProducts>
   )
 }
 
