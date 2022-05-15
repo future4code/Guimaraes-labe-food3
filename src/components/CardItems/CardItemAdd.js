@@ -1,69 +1,47 @@
-import React, { useState } from "react"
-import Card from '@material-ui/core//Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography';
-import './styles.css'
+import React, { useContext, useEffect, useState } from "react"
+import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext"
+import { GlobalOrderContext } from "../../Context/OrderContent/GlobalOrderContext"
+import { ContainerDetails, ContainerProduct, QuantityContainer } from "./styles"
+
+export const CardItemAdd  = ({ product, openModal }) => {
+
+  const { cart, setCart,dataRestaurant,setDataRestaurant } = useContext(GlobalOrderContext)
 
 
-export const CardItemAdd = (product) => {
+  const [onCart, setOnCart] = useState(0)
 
-  const [quantity, setQuantity] = useState(0)
-  const [showPopUp, setShowPopUp] = useState(false);
-  const [item, setItem] = useState(0);
-  const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-  const onChangeItem = (event) => {
-    event.persist();
-    setItem(event.target.value)
+  const removeFromCart = (product) => {
+    setCart(
+      cart.filter((prod) => {
+        return product.id !== prod.id
+      })
+    )
+    localStorage.setItem("cart", JSON.stringify(cart))
+    setOnCart(0)
   }
 
-  const onClickCloseItens = () => {
-    setShowPopUp(false)
-    setQuantity(item)
-
-  }
-
-  const handleQuantity = () => {
-
-    if (item) {
-      setQuantity(0)
-      setItem(0)
-    } else {
-      setShowPopUp(true)
-    }
-
-  }
-
-  console.log("props recebida", product)
+  useEffect(() => {
+    cart.map((prod) => {
+      if (prod.id === product.id) return setOnCart(prod.quantity)
+      else return false
+    })
+  }, [cart, product.id]) 
 
   return (
-
-    <>
-      <Card className="cardProduct" sx={{ maxWidth: 345, mb: 2 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={product.product.photoUrl}
-          alt="foto produto restaurante"
-        />
-        <CardContent>
-          <Typography className=" nameProduct" gutterBottom variant="h5" component="div">
-            {product.product.name}
-          </Typography>
-          <Typography gutterBottom variant="h6" component="div">
-            {product.product.description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button  size="small">R$ {Number(product.product.price).toFixed(2)}</Button>
-          <Button variant="outlined" size="small">Adicionar</Button>
-        </CardActions>
-      </Card>
-    </>
-
-
+    <ContainerProduct>
+      <img src={product.photoUrl} alt="Imagem do produto" />
+      <ContainerDetails>
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <span>R$ {Number(product.price).toFixed(2)}</span>
+        {!onCart ? (
+          <button onClick={() => openModal(product)}>adicionar</button>
+        ) : (
+          <button onClick={() => removeFromCart(product)}>remover</button>
+        )}
+        {onCart ? <QuantityContainer>{onCart}</QuantityContainer> : ""}
+      </ContainerDetails>
+    </ContainerProduct>
   )
 }
+

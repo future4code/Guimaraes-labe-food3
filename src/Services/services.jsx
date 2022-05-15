@@ -112,7 +112,7 @@ export const getRestaurantDetail = (initialState, path) => {
       }
     };
     fetch();
-  }, []);
+  }, [path]);
 
 return { data, loading };
 };

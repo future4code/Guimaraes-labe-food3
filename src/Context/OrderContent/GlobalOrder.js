@@ -5,9 +5,21 @@ import {GlobalOrderContext} from './GlobalOrderContext'
 
 const GlobalOrder = (props) => {
 
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart"))
+      ? JSON.parse(localStorage.getItem("cart"))
+      : []
+  );
+  const [dataRestaurant, setDataRestaurant] = useState(
+    JSON.parse(localStorage.getItem("restaurant"))
+      ? JSON.parse(localStorage.getItem("restaurant"))
+      : {}
+  );
   const [activeOrder, setActiveOrder] = useState({});
+  const [loading, setLoading] = useState(false)
 
   const getActiveOrder = () => {
+    setLoading(true)
     axios
       .get(`${BASE_URL}/active-order`, {
         headers: {
@@ -16,18 +28,24 @@ const GlobalOrder = (props) => {
       })
       .then((res) => {
         setActiveOrder(res.data);
+        setLoading(false)
       })
       .catch((err) => {
         window.alert("Erro ao realizar solicitação.\n Tente novamente.");
       });
   };
-
   return (
     <GlobalOrderContext.Provider
-      value={{
-        activeOrder,
-        getActiveOrder,
-      }}
+    value={{
+      cart,
+      setCart,
+      dataRestaurant,
+      setDataRestaurant,
+      activeOrder,
+      getActiveOrder,
+      loading,
+      setLoading
+    }}
     >
       {props.children}
     </GlobalOrderContext.Provider>

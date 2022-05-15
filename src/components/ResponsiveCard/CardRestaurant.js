@@ -30,7 +30,7 @@ const CardRestaurant =  ({
         <Typography gutterBottom variant="h6" component="div">
         {category}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" >
         {address}   
         </Typography>
       </CardContent>

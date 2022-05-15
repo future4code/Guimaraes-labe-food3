@@ -1,55 +1,101 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getRestaurantDetail } from '../../Services/services';
-import CircularProgress from '@material-ui/core/CircularProgress'
-import { GlobalStateContext } from '../../Context/GlobalState/GlobalStateContext'
-import CardRestaurantDetails from '../../components/CardRestaurant/CardRestaurantDetails';
-import { goToFourFood } from "../../routes/coordinator";
-import CardRestaurant from '../../components/ResponsiveCard/CardRestaurant';
-import CardProductRestaurant from '../../components/ResponsiveCard/CardRestaurant';
-
-
-
-import Arrow from '../../components/Arrow/Arrow';
+import {
+  FormControl,
+  MenuItem,
+  Select,
+} from '@material-ui/core'
+import React, { useContext, useEffect, useState } from "react"
+import { useParams,useNavigate } from "react-router-dom"
 import Header from '../../components/Header/Header';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import CardRestaurant from '../../components/ResponsiveCard/CardRestaurant';
+import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContext'
 import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
-import Footer from '../../components/Footer/Footer';
-
+import Arrow from '../../components/Arrow/Arrow';
+import { goToFourFood } from "../../routes/coordinator";
 
 import {
-  RestaurantConteinerDetails,
-  RestaurantContainer,
-  FourFoodFooter
+  ContainerModal,
+  ContainerProductCategory,
+  ContainerRestaurantsDetails,
+  ModalSelect,
+  StyledButton,
+} from "./styles"
 
-} from './styles';
+import { getRestaurantDetail } from '../../Services/services';
 
-const Restaurants = () => {
-
+const RestaurantPage = () => {
   const navigate = useNavigate()
   const param = useParams()
   const { data, loading } = getRestaurantDetail({}, `/restaurants/${param.id}`)
-  const { states, setters } = useContext(GlobalStateContext)
-
-  const { cart, restaurant } = states
-  const { setCart, setRestaurant } = setters
-  const [item, setItem] = useState(0);
-  const [popUp, setPopUp] = useState(false);
-  const options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const [quantity, setQuantity] = useState(0)
   const [open, setOpen] = useState(false)
+  const { cart, setCart,dataRestaurant,setDataRestaurant } = useContext(GlobalOrderContext)
   const [prod, setProd] = useState({})
-
-  console.log("estados restaurant", restaurant)
-
-  console.log("data", data)
 
   useEffect(() => {
 
-    localStorage.setItem('cart', JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart))
   }, [cart])
+
+  const openModal = (product) => {
+    if(cart.length > 0){
+      if(data.restaurant.id === cart[0].idRestaurant){
+        setOpen(true)
+        setProd({ ...product,idRestaurant:param.id })
+       
+      } else {
+        alert("Infelizmente você não pode realizar pedidos em diferentes restaurantes! Verifique seu carrinho")
+        
+      }
+    } else {
+      setOpen(true)
+      setProd({ ...product,idRestaurant:param.id })
+      
+    }
+    
+  }
+
+  const addToCart = () => {
+        if(quantity>0)
+    setCart([...cart, { ...prod, quantity: quantity}])
+    setQuantity(0)
+    setDataRestaurant(data.restaurant)
+    localStorage.setItem("restaurant",JSON.stringify(data.restaurant))
+    localStorage.setItem("cart", JSON.stringify(cart))
+    closeModal()
+  }
+
+  const closeModal=()=>{
+
+    setOpen(!open);
+   
+  }
+
+  const handleChange = (event) => {
+ 
+    setQuantity(event.target.value)
+    
+  }
+
+  const renderProducts = (category) => {
+    return data.restaurant && data.restaurant.products.map((product) => {
+      if (product.category === category) {
+        return (
+          <CardItemAdd
+            key={product.id}
+            product={product}
+            quantity={product.quantity}
+            openModal={openModal}
+           
+          />
+        )
+      }
+    })
+  }
 
   const renderRestaurant = data.restaurant &&
     (
-      <RestaurantConteinerDetails>
+      <ContainerRestaurantsDetails>
         <CardRestaurant
          image={data.restaurant.logoUrl}
          name={data.restaurant.name}
@@ -58,48 +104,67 @@ const Restaurants = () => {
          shipping={data.restaurant.shipping}
          address={data.restaurant.address}
         />
-      </RestaurantConteinerDetails>
+      </ContainerRestaurantsDetails>
     )
 
-    const renderProducts = (category) => {
-      return data.restaurant && data.restaurant.products.map((product) => {
-        if (product.category === category) {
-          return (
-     <CardItemAdd
-              key={product.id}
-              product={product}
-              quantity={product.quantity}
-            /> 
-          )
-        }
-      })
-    }
-    const categoriesList = data.restaurant && data.restaurant.products.map((product) => {
-      return product.category
-    })
-    
-    const products = [...new Set(categoriesList)].map((category) => {
-      return (
-        
-        <RestaurantConteinerDetails key={category} >
-          <h2>{category}</h2>
-          {renderProducts(category)}
-        </RestaurantConteinerDetails>
-      )
-    })
-  return (<>
-<Arrow onClick={()=> goToFourFood(navigate)} showTitle={true} title={'Restaurante'}/>   
+  const categoriesList = data.restaurant && data.restaurant.products.map((product) => {
+    return product.category
+  })
+  
 
-    <RestaurantContainer>
+  const products = [...new Set(categoriesList)].map((category) => {
+    return (
+      <ContainerProductCategory key={category} >
+        <h2>{category}</h2>
+        {renderProducts(category)}
+      </ContainerProductCategory>
+    )
+  })
 
-    {loading && <CircularProgress />}
-    {!loading && renderRestaurant}
-    {products}
-</RestaurantContainer>
-<FourFoodFooter>
-            <Footer />
-        </FourFoodFooter>
-  </>
+  return (
+    <div>
+      <Arrow onClick={()=> goToFourFood(navigate)} showTitle={true} title={'Restaurante'}/> 
+      <Header />
+      { loading && <CircularProgress/>}
+      {!loading && renderRestaurant} 
+     {products}
+     <ContainerModal open={open} onClick={(e) => (e.target === e.currentTarget ? closeModal() : null)}>
+       <ModalSelect >
+         <p>Selecione a quantidade desejada</p>
+         <FormControl fullWidth>
+           <Select
+             labelId="demo-simple-select-label"
+             id="demo-simple-select"
+             value={quantity}
+             onChange={handleChange}
+           >
+             <MenuItem value={0} disabled>
+               0
+             </MenuItem>
+             <MenuItem value={1}>1</MenuItem>
+             <MenuItem value={2}>2</MenuItem>
+             <MenuItem value={3}>3</MenuItem>
+             <MenuItem value={4}>4</MenuItem>
+             <MenuItem value={5}>5</MenuItem>
+             <MenuItem value={6}>6</MenuItem>
+             <MenuItem value={7}>7</MenuItem>
+             <MenuItem value={8}>8</MenuItem>
+             <MenuItem value={9}>9</MenuItem>
+             <MenuItem value={10}>10</MenuItem>
+           </Select>
+         </FormControl>
+         <StyledButton
+           variant="text"
+           color="primary"
+           onClick={() => addToCart()}
+         >
+           ADICIONAR AO CARRINHO
+         </StyledButton>
+       </ModalSelect>
+     </ContainerModal>
+     
+    </div>
   )
 }
-export default Restaurants
+
+export default RestaurantPage

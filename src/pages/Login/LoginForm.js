@@ -37,6 +37,8 @@ const LoginForm = () => {
 
         if (retorno.data.status === 200) {
 
+            setters.setInfoUser(retorno.data);        
+            localStorage.setItem('infoUser',JSON.stringify(retorno.data))
             localStorage.setItem('token', retorno.data.token)
 
                 window.alert("Seja Bem-Vindo")

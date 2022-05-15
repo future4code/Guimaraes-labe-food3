@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
@@ -6,6 +7,11 @@ import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
 import { getActiveOrder, getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import {
+    goToFourFood,
+    goToProfile,
+    goToCart
+} from '../../routes/coordinator';
 
 
 
@@ -19,6 +25,8 @@ import {
 import { ActiveOrder } from '../../components/ActiveOrder/ActiveOrder'
 
 const FourFood = () => {
+
+    const navigate = useNavigate()
 
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
@@ -74,7 +82,7 @@ const FourFood = () => {
 
         </FourFoodCardContainer>
         <FourFoodFooter>
-            <Footer />
+            <Footer onCLick={()=>goToCart(navigate)}/>
         </FourFoodFooter>
         {getActiveOrder? <ActiveOrder/>: ''}
     </>

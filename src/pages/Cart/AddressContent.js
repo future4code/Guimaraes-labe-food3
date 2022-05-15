@@ -4,7 +4,7 @@ import { AddressContentContentContainer } from "./styles";
 
 
 
-const AddressContent = () => {
+const AddressContent = ({address}) => {
 
     return (<AddressContentContentContainer>
             <TextField
@@ -16,7 +16,7 @@ const AddressContent = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                placeholder="Rua / Av."
+                placeholder={address}
                 required
                 InputLabelProps={{ shrink: true}}
             />
