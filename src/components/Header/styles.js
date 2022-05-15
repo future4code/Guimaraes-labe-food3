@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 345px;
     height: 3em;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@ export const HeaderContainer = styled.div`
 
     img{
         display: flex;
-        width: 50vw;
+        width: 345px;
         height: 10rem;
     }
 

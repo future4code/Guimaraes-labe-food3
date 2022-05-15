@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './routes/router';
-import GlobalStyle from './styles/GlobalStale';
-import GlobalState from './Context/GlobalState'
+import GlobalState from './Context/GlobalState/GlobalState'
+import GlobalOrder from './Context/OrderContent/GlobalOrder'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <GlobalState>
+    <GlobalOrder>
+      <GlobalState>
         <Router />
-    </GlobalState>
+      </GlobalState>
+    </GlobalOrder>
   </React.StrictMode>,
   document.getElementById('root')
 );

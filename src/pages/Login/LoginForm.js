@@ -8,7 +8,7 @@ import { goToAddress, goToFourFood } from "../../routes/coordinator";
 import { ToastContainer, toast } from 'react-toastify';
 import { message } from "../../utils/message";
 import 'react-toastify/dist/ReactToastify.css';
-import { GlobalStateContext } from "../../Context/GlobalStateContext";
+import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext";
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const LoginForm = () => {
@@ -29,22 +29,20 @@ const LoginForm = () => {
         }
 
         auth(payload);
-
-        
+      
     }
 
     const auth = async (payload) => {
         let retorno = await login(payload);
-    
 
         if (retorno.data.status === 200) {
+
             setters.setInfoUser(retorno.data);        
             localStorage.setItem('infoUser',JSON.stringify(retorno.data))
             localStorage.setItem('token', retorno.data.token)
 
                 window.alert("Seja Bem-Vindo")
-            
-           
+                 
             setLoading(false)
             goToFourFood(navigate);
             if(retorno.data.data.hasAddress === false)  {
@@ -61,14 +59,6 @@ const LoginForm = () => {
         }
     }
 
-    useEffect(()=>{
-        const infoUser = JSON.parse(localStorage.getItem('infoUser'));
-       
-        if(infoUser){
-            auth((infoUser.payload))
-        }
-
-    },[])
 
     return (<InputsContainer>
     

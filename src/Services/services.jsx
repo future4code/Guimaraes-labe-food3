@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { GlobalStateContext } from "../Context/GlobalStateContext";
+import { GlobalStateContext } from  '../Context/GlobalState/GlobalStateContext'
 import { BASE_URL } from "../constant/urls";
 
 
@@ -11,11 +11,10 @@ export const getRestaurant = (url, initialState) => {
   const [category, setCategory] = useState([])
   const [filter, setFilter] = useState(restaurants)
 
-  const { states, setters } = useContext(GlobalStateContext);
-
-  const token = states.infoUser.token
 
   useEffect(() => {
+
+    const token = localStorage.getItem('token')
 
     const fetch = async () => {
       setLoading(true);
@@ -38,7 +37,6 @@ export const getRestaurant = (url, initialState) => {
 
       } catch (err) {
         setError(err);
-/*         console.log('Erro', err.response.data.message) */
         window.alert('Erro', err.response.data.message)
       } finally {
         setLoading(false);
@@ -52,7 +50,6 @@ export const getRestaurant = (url, initialState) => {
 
 export const useRequestOrders = (url, initialState) => {
 
-  const { states, setters } = useContext(GlobalStateContext);
 
   const [orders, setOrders] = useState(initialState);
   const [loading, setLoading] = useState(false);
@@ -60,18 +57,18 @@ export const useRequestOrders = (url, initialState) => {
 
   useEffect(() => {
 
-    const token = states.token
+    const token = localStorage.getItem('token')
 
     const fetch = async () => {
       setLoading(true);
       try {
-        const { orders } = await axios.get(url, {
+        const {data } = await axios.get(url, {
           headers: {
             'Content-Type': 'application/json',
             auth: token
           }
         });
-        setOrders(orders.data);
+        setOrders(data);
       } catch (err) {
         setError(err);
       } finally {
@@ -87,15 +84,14 @@ export const useRequestOrders = (url, initialState) => {
 
 
 export const getRestaurantDetail = (initialState, path) => {
-  const { states, setters } = useContext(GlobalStateContext);
-
-  const token = states.infoUser.token
 
   const [data, setData] = useState(initialState);
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
+    const token = localStorage.getItem('token')
 
     const fetch = async () => {
       setLoading(true);
@@ -115,7 +111,26 @@ export const getRestaurantDetail = (initialState, path) => {
       }
     };
     fetch();
-  }, []);
+  }, [path]);
 
 return { data, loading };
+};
+
+export const getActiveOrder = () => {
+
+  const [activeOrder, setActiveOrder] = useState({});
+
+  axios
+    .get(`${BASE_URL}/active-order`, {
+      headers: {
+        auth: localStorage.getItem("token"),
+      },
+    })
+    .then((res) => {
+      setActiveOrder(res.data);
+    })
+    .catch((err) => {
+      window.alert("Erro ao realizar solicitação.\n Tente novamente.");
+    });
+    return  [activeOrder, setActiveOrder] 
 };

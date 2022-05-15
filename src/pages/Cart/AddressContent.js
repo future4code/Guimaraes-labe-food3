@@ -4,19 +4,18 @@ import { AddressContentContentContainer } from "./styles";
 
 
 
-const AddressContent = () => {
+const AddressContent = ({address}) => {
 
     return (<AddressContentContentContainer>
             <TextField
                 type="text"
                 name="Endereco de Entrega"
                 value=""
-                // onChange={(e) => setText(e.target.value)}
                 label="Endereço de Entrega"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                placeholder="Rua / Av."
+                placeholder={address}
                 required
                 InputLabelProps={{ shrink: true}}
             />
