@@ -4,12 +4,13 @@ import styled from "styled-components"
 export const ContainerActiveOrder = styled.div`
   font-family: "Roboto" ;
   height: auto;
-  width: 100vw ;
+  width: 30vw ;
   padding: 1rem;
   z-index: 100;
   position: fixed;
   bottom: 54px;
   float: center;
+  background-color: #000;
 `
 
 export const ImgClock = styled.img`

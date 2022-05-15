@@ -5,15 +5,12 @@ import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
 import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
-import { getActiveOrder, getRestaurant } from '../../Services/services'
+import { getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContext'
 import {
-    goToFourFood,
-    goToProfile,
     goToCart
 } from '../../routes/coordinator';
-
-
 
 import {
     FourFoodCardContainer,
@@ -31,10 +28,12 @@ const FourFood = () => {
     const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
 
+    const { getActiveOrder } = useContext(GlobalOrderContext)
 
     const onChangeInput = (ev) => {
         setInput(ev.target.value)
     }
+
 
     const showRestaurant =
         restaurants &&

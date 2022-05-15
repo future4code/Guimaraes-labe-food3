@@ -1,22 +1,19 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { CartContainer, ContainerData } from './styles'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import AddressContent from './AddressContent'
 import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
 import Footer from '../../components/Footer/Footer'
-import Button  from "@material-ui/core/Button"
 import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContext'
-import { goToFourFood } from "../../routes/coordinator";
-import useForm from "../../hooks/useForm"
+import { goToFourFood } from '../../routes/coordinator';
+import useForm from '../../hooks/useForm'
 import axios from 'axios'
 import Header from '../../components/Header/Header';
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { BASE_URL } from "../../constant/urls"
+import { BASE_URL } from '../../constant/urls'
 
 
 
 import {
-  AdressContainer,
   CartDetails,
   CartEmpty,
   Container,
@@ -30,53 +27,47 @@ import {
   Total,
   TotalPrice,
   AddressTitle
-} from "./styles"
+} from './styles'
 
 const Cart = () => {
-  const param = useParams()
-  const { cart, dataRestaurant, loading, setLoading} = useContext(GlobalOrderContext)
+ 
+  const { cart, dataRestaurant, loading, } = useContext(GlobalOrderContext)
   const infoUser = JSON.parse(localStorage.getItem('infoUser'))
 
   const navigate = useNavigate()
-  const { form, onChangeForm } = useForm({
-    paymentMethod: "",
+  const [ form, onChange ] = useForm({
+    paymentMethod: '',
   })
-console.log('datarestaurant', dataRestaurant)
+
+
   const [renderCart, setRenderCart] = useState([])
 
   const renderCartFun = () => {
-    setRenderCart(JSON.parse(localStorage.getItem("cart")))
+    setRenderCart(JSON.parse(localStorage.getItem('cart')))
   }
-
-  const onChangeInput = (ev)=>{
-    ev.target.value
-    console.log('evento', ev)
-  }
-
- 
 
   const placeOrder = (e) => {
-    console.log('event', e)
-    console.log('event form', form)
+ 
     e.preventDefault()
+
     const body = {
-      products: cart.map((iten) => {
+      products: cart.map((item) => {
         return {
-          id: iten.id,
-          quantity: iten.quantity,
+          id: item.id,
+          quantity: item.quantity,
         }
       }),
       paymentMethod: form.paymentMethod,
     }
     const config = {
-      method: "post",
+      method: 'post',
       url: BASE_URL + `/restaurants/${dataRestaurant.id}/order`,
-      headers: { auth: localStorage.getItem("token") },
+      headers: { auth: localStorage.getItem('token') },
       data: body,
     }
     axios(config)
       .then(({ data }) => {
-        alert("pedido feito")
+        alert('pedido feito')
         return data
       })
       .catch((err) => {
@@ -94,10 +85,12 @@ console.log('datarestaurant', dataRestaurant)
   let somaWithFrete = soma + dataRestaurant.shipping
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem('cart', JSON.stringify(cart))
     renderCartFun()
   }, [cart])
+
 console.log('form',form)
+
   return (
     <Container>
       {loading && <CircularProgress />}
@@ -113,8 +106,8 @@ console.log('form',form)
           <h3>{dataRestaurant.name}</h3>
           <p>{dataRestaurant.address}</p>
           <p>
-            {" "}
-            {Math.floor(dataRestaurant.deliveryTime * 0.9)} -{" "}
+            {' '}
+            {Math.floor(dataRestaurant.deliveryTime * 0.9)} -{' '}
             {dataRestaurant.deliveryTime} min
           </p>
         </RestaurantDetails>
@@ -128,8 +121,8 @@ console.log('form',form)
         })}
         <Price>
           <Frete>
-            Frete R$ {" "}
-            {cart.length > 0 ? dataRestaurant.shipping.toFixed(2) : "0,00"}
+            Frete R$ {' '}
+            {cart.length > 0 ? dataRestaurant.shipping.toFixed(2) : '0,00'}
           </Frete>
           <TotalPrice>
             <SubTotal>SUBTOTAL</SubTotal>
@@ -140,32 +133,32 @@ console.log('form',form)
         <Path></Path>
         <form onSubmit={placeOrder}>
           <Input
-            type="radio"
-            value={form}
+            type='radio'
+            value={'money'}
             required
-            onChange={onChangeInput}
-            id="money"
-            name={"paymentMethod"}
+            onChange={onChange}
+            id='money'
+            name={'paymentMethod'}
           />
-          <label htmlFor="dinheiro">Dinheiro</label>
+          <label htmlFor='dinheiro'>Dinheiro</label>
           <br />
           <br />
           <Input
-            type="radio"
-            value={"creditcard"}
+            type='radio'
+            value={'creditcard'}
             required
-            onChange={onChangeInput}
-            id="credit"
-            name="paymentMethod"
+            onChange={onChange}
+            id='credit'
+            name={'paymentMethod'}
           />
-          <label htmlFor="credito">Cartão de Crédito</label>
+          <label htmlFor='credito'>Cartão de Crédito</label>
           <StyledButton
-            textPrimary={"secondary"}
-            color={"primary"}
+            textPrimary={'secondary'}
+            color={'primary'}
             fullWidth
-            variant="contained"
-            type="submit"
-            margin={"normal"}
+            variant='contained'
+            type='submit'
+            margin={'normal'}
             desabilitado={cart.length <= 0}
           >
             Confirmar

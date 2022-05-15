@@ -37,7 +37,6 @@ export const getRestaurant = (url, initialState) => {
 
       } catch (err) {
         setError(err);
-/*         console.log('Erro', err.response.data.message) */
         window.alert('Erro', err.response.data.message)
       } finally {
         setLoading(false);

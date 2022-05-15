@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* import { useState } from "react";
 
 const useForm = ( inicialState ) => {
     //Inicializa o state
@@ -15,6 +15,25 @@ const useForm = ( inicialState ) => {
     }
 
     return [form, handleInputChange, clear]
+}
+
+export default useForm; */
+
+import React, {useState} from 'react'
+
+const useForm = (initialState) => {
+    const [form, setForm] = useState(initialState)
+
+    const onChange = (event) =>{
+        const {name, value} = event.target
+        setForm({
+            ...form,
+            [name]:value   
+        })
+    }
+
+  return [form, onChange, setForm]
+
 }
 
 export default useForm;

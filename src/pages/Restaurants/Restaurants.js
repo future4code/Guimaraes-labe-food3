@@ -4,7 +4,7 @@ import {
   Select,
 } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from "react"
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import Header from '../../components/Header/Header';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import CardRestaurant from '../../components/ResponsiveCard/CardRestaurant';
@@ -29,7 +29,7 @@ const RestaurantPage = () => {
   const { data, loading } = getRestaurantDetail({}, `/restaurants/${param.id}`)
   const [quantity, setQuantity] = useState(0)
   const [open, setOpen] = useState(false)
-  const { cart, setCart,dataRestaurant,setDataRestaurant } = useContext(GlobalOrderContext)
+  const { cart, setCart, dataRestaurant, setDataRestaurant } = useContext(GlobalOrderContext)
   const [prod, setProd] = useState({})
 
   useEffect(() => {
@@ -38,43 +38,43 @@ const RestaurantPage = () => {
   }, [cart])
 
   const openModal = (product) => {
-    if(cart.length > 0){
-      if(data.restaurant.id === cart[0].idRestaurant){
+    if (cart.length > 0) {
+      if (data.restaurant.id === cart[0].idRestaurant) {
         setOpen(true)
-        setProd({ ...product,idRestaurant:param.id })
-       
+        setProd({ ...product, idRestaurant: param.id })
+
       } else {
-        alert("Infelizmente você não pode realizar pedidos em diferentes restaurantes! Verifique seu carrinho")
-        
+        alert("Você não pode realizar pedidos em diferentes restaurantes!Esvazie seu carrinho e comece novamente")
+
       }
     } else {
       setOpen(true)
-      setProd({ ...product,idRestaurant:param.id })
-      
+      setProd({ ...product, idRestaurant: param.id })
+
     }
-    
+
   }
 
   const addToCart = () => {
-        if(quantity>0)
-    setCart([...cart, { ...prod, quantity: quantity}])
+    if (quantity > 0)
+      setCart([...cart, { ...prod, quantity: quantity }])
     setQuantity(0)
     setDataRestaurant(data.restaurant)
-    localStorage.setItem("restaurant",JSON.stringify(data.restaurant))
+    localStorage.setItem("restaurant", JSON.stringify(data.restaurant))
     localStorage.setItem("cart", JSON.stringify(cart))
     closeModal()
   }
 
-  const closeModal=()=>{
+  const closeModal = () => {
 
     setOpen(!open);
-   
+
   }
 
   const handleChange = (event) => {
- 
+
     setQuantity(event.target.value)
-    
+
   }
 
   const renderProducts = (category) => {
@@ -86,7 +86,7 @@ const RestaurantPage = () => {
             product={product}
             quantity={product.quantity}
             openModal={openModal}
-           
+
           />
         )
       }
@@ -97,12 +97,12 @@ const RestaurantPage = () => {
     (
       <ContainerRestaurantsDetails>
         <CardRestaurant
-         image={data.restaurant.logoUrl}
-         name={data.restaurant.name}
-         category={data.restaurant.category}
-         deliveryTime={data.restaurant.deliveryTime}
-         shipping={data.restaurant.shipping}
-         address={data.restaurant.address}
+          image={data.restaurant.logoUrl}
+          name={data.restaurant.name}
+          category={data.restaurant.category}
+          deliveryTime={data.restaurant.deliveryTime}
+          shipping={data.restaurant.shipping}
+          address={data.restaurant.address}
         />
       </ContainerRestaurantsDetails>
     )
@@ -110,7 +110,7 @@ const RestaurantPage = () => {
   const categoriesList = data.restaurant && data.restaurant.products.map((product) => {
     return product.category
   })
-  
+
 
   const products = [...new Set(categoriesList)].map((category) => {
     return (
@@ -122,48 +122,51 @@ const RestaurantPage = () => {
   })
 
   return (
-    <div>
-      <Arrow onClick={()=> goToFourFood(navigate)} showTitle={true} title={'Restaurante'}/> 
+    <>
+      <Arrow onClick={() => goToFourFood(navigate)} showTitle={true} title={'Restaurante'} />
       <Header />
-      { loading && <CircularProgress/>}
-      {!loading && renderRestaurant} 
-     {products}
-     <ContainerModal open={open} onClick={(e) => (e.target === e.currentTarget ? closeModal() : null)}>
-       <ModalSelect >
-         <p>Selecione a quantidade desejada</p>
-         <FormControl fullWidth>
-           <Select
-             labelId="demo-simple-select-label"
-             id="demo-simple-select"
-             value={quantity}
-             onChange={handleChange}
-           >
-             <MenuItem value={0} disabled>
-               0
-             </MenuItem>
-             <MenuItem value={1}>1</MenuItem>
-             <MenuItem value={2}>2</MenuItem>
-             <MenuItem value={3}>3</MenuItem>
-             <MenuItem value={4}>4</MenuItem>
-             <MenuItem value={5}>5</MenuItem>
-             <MenuItem value={6}>6</MenuItem>
-             <MenuItem value={7}>7</MenuItem>
-             <MenuItem value={8}>8</MenuItem>
-             <MenuItem value={9}>9</MenuItem>
-             <MenuItem value={10}>10</MenuItem>
-           </Select>
-         </FormControl>
-         <StyledButton
-           variant="text"
-           color="primary"
-           onClick={() => addToCart()}
-         >
-           ADICIONAR AO CARRINHO
-         </StyledButton>
-       </ModalSelect>
-     </ContainerModal>
-     
-    </div>
+      {loading && <CircularProgress />}
+      <styleRestaurant>
+        {!loading && renderRestaurant}
+        {products}
+      </styleRestaurant>
+
+      <ContainerModal open={open} onClick={(e) => (e.target === e.currentTarget ? closeModal() : null)}>
+        <ModalSelect >
+          <p>Selecione a quantidade desejada</p>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={quantity}
+              onChange={handleChange}
+            >
+              <MenuItem value={0} disabled>
+                0
+              </MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={6}>6</MenuItem>
+              <MenuItem value={7}>7</MenuItem>
+              <MenuItem value={8}>8</MenuItem>
+              <MenuItem value={9}>9</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+            </Select>
+          </FormControl>
+          <StyledButton
+            variant="text"
+            color="primary"
+            onClick={() => addToCart()}
+          >
+            ADICIONAR AO CARRINHO
+          </StyledButton>
+        </ModalSelect>
+      </ContainerModal>
+
+    </>
   )
 }
 
