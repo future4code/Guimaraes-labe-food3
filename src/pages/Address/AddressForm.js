@@ -1,11 +1,10 @@
 import { Button, TextField } from '@material-ui/core';
-import React, { useContext, useState , useEffect} from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalStateContext } from '../../Context/GlobalState/GlobalStateContext';
 import useForm from '../../hooks/useForm';
 import { InputsContainer } from './styles';
-import { toast, ToastContainer } from 'react-toastify'
-import { message } from '../../utils/message';
-import { goToFourFood, goToProfile} from '../../routes/coordinator';
+
+import { goToFourFood} from '../../routes/coordinator';
 import { useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import { BASE_URL } from '../../constant/urls'
@@ -16,8 +15,6 @@ const AddressForm = () => {
    
     const navigate = useNavigate();
 
-    const { states, setters } = useContext(GlobalStateContext);
-    const [countShowMessage, setCountShowMessage] = useState(0); 
     const [loading, setLoading] = useState(false)
 
     const {token} =  JSON.parse(localStorage.getItem('infoUser'))

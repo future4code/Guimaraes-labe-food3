@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  Historico, HistoricoH1, ContainerPedidos, ProfileContainer } from './ProfileStyles';
+import { Historico, HistoricoH1, ContainerPedidos, buttonStyle } from './ProfileStyles';
 import { FourFoodFooter } from './styles';
 import Footer from '../../components/Footer/Footer';
 import { goToAddress, goBack } from '../../routes/coordinator';
@@ -65,7 +65,7 @@ const Profile = () => {
     const logout = () => {
         localStorage.removeItem("token");
         navigate("/");
-      };
+    };
 
     const convertMonth = (month) => {
         switch (month) {
@@ -115,10 +115,9 @@ const Profile = () => {
             </div>
         )
     }
-)
+    )
     return (
-        <>
-            <ProfileContainer >
+        <div class="container">
                 <Arrow onClick={() => goBack(navigate)} showTitle={true} title={' Meu perfil'} />
                 <Header />
                 {infos && <>
@@ -137,7 +136,7 @@ const Profile = () => {
                         <h3 class="card-header">Endereço cadastrado</h3>
                         <div class="card-body">
                             <h5 class="card-title">{infos.address}</h5>
-                            <button type="button" onClick={() => goToAddress(navigate)}>Editar Endereço</button>
+                            <button type="button"  onClick={() => goToAddress(navigate)}>Editar Endereço</button>
                         </div>
                     </div>
                 </>
@@ -157,12 +156,8 @@ const Profile = () => {
                 <FourFoodFooter>
                     <Footer />
                 </FourFoodFooter>
-                <button type="button" onClick={logout}>Logout</button>
-            </ProfileContainer>
-        </>
-
-
-
+                <button  type='button' onClick={logout}>Logout</button>     
+        </div>
     );
 }
 export default Profile;

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { GlobalStateContext } from  '../Context/GlobalState/GlobalStateContext'
 import { BASE_URL } from "../constant/urls";
 
 
@@ -11,7 +10,7 @@ export const getRestaurant = (url, initialState) => {
   const [category, setCategory] = useState([])
   const [filter, setFilter] = useState(restaurants)
 
-
+console.log('filtro', filter)
   useEffect(() => {
 
     const token = localStorage.getItem('token')

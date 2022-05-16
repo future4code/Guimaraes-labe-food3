@@ -4,7 +4,7 @@ import { FiltroContainer } from "./styles";
 
 const Filtro = (props) => {
 
-    const [category, setFilter, setRestaurants] = props.filter
+    const [category, setRestaurants] = props.filter
     
     const filterRestaurant = (cat) =>{
         const updatedList = category.filter((x) => x.category === cat);

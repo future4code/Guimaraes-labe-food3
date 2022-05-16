@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useContext } from 'react'
+import { useNavigate} from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
@@ -25,7 +25,7 @@ const FourFood = () => {
 
     const navigate = useNavigate()
 
-    const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
+    const [restaurants, loading, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
 
     const { getActiveOrder } = useContext(GlobalOrderContext)
@@ -42,10 +42,10 @@ const FourFood = () => {
         })
             .map((rest, index) => {
                 return (<div  key={index}>
-                    <Filtro
+{/*                     <Filtro
                     category={category}
                     filter={[filter, setFilter, setRestaurants]}
-                    />
+                    /> */}
                     <Card
                     image={rest.logoUrl}
                     name={rest.name}
