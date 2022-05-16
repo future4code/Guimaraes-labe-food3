@@ -14,7 +14,7 @@ const EditPerfil = () => {
 
     }
     )
-    const [form, onChange, clear] = useForm({
+    const [form, onChange] = useForm({
         name: '',
         email: '',
         cpf: '',

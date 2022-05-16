@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useContext } from 'react'
+import { useNavigate} from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'

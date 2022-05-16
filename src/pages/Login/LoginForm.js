@@ -6,17 +6,15 @@ import { login } from "../../Services/auth"
 import { useNavigate} from 'react-router-dom'
 import { goToAddress, goToFourFood } from "../../routes/coordinator";
 import { ToastContainer, toast } from 'react-toastify';
-import { message } from "../../utils/message";
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext";
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const LoginForm = () => {
 
-    const [form, onChange, clear] = useForm({ email: "", password: "" });
-    const { states, setters } =  useContext(GlobalStateContext); 
+    const [form, onChange] = useForm({ email: "", password: "" });
+    const { setters } =  useContext(GlobalStateContext); 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState();
     const navigate = useNavigate();
 
     const onSubmitForm = (event) => {
