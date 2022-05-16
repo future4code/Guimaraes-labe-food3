@@ -67,7 +67,7 @@ Este projeto atual temos que criar uma aplicação nos moldes do App Ifood
 
 <h2 id="nfunciona">:rocket: O que ainda não funciona </h2>
 
-❎Responsividade Desktop página e Perfil <br>
+❎Responsividade Desktop da página de Perfil <br>
 ❎Bug Tela de Carrinho, não seta o carrinho para 0 produto depois de efetuado o pedido<br>
 ❎Escolha do tipo de comida, o filtro estava funcionando direito, porém do nada deu um bug e parou de funcionar<br>
 
