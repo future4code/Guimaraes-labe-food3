@@ -128,13 +128,13 @@ Desenvolvido por:
       <td align="center"><a href="https://github.com/FIXER3600">
         <img src="https://avatars.githubusercontent.com/u/89948060?v=4" style="border-radius: 50%" width="100px" alt="Imagem do perfil do Guilherme"/>
       <br />
-        <sub><b>Crhistian Felipe da Silva/b></sub>
+        <sub><b>Crhistian Felipe da Silva</b></sub>
       <br />
       </td>
       <td align="center"><a href="https://github.com/T3lo5">
         <img src="https://avatars.githubusercontent.com/u/72330142?v=4" style="border-radius: 50%" width="100px" alt="Imagem do perfil de Matheus" />
       <br />
-        <sub><b>Anderson Franciscato/b></sub>
+        <sub><b>Anderson Franciscato</b></sub>
       <br />
       </td>  
       <td align="center"><a href="https://github.com/IGBxRobinho">
