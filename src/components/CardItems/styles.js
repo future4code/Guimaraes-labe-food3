@@ -91,6 +91,8 @@ export const QuantityContainer = styled.div`
   font-style: normal;
   line-height: normal;
   letter-spacing: -0.39px;
+  background-color: #E8222E;
+  color: #fff;
 
 `
 export const ContainerModal = styled.div`
