@@ -96,22 +96,16 @@ export const Historico = styledComponents.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 1vh;
-    justify-content: left;
-    align-items: left;
 `;
 export const HistoricoH1 = styledComponents.h1`
-    background-color: white;
-    color: black;
-    text-align: center;
     font-size: 16px;
     flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    text-align: center;
     font-weight: regular;
     font-family: 'Roboto';
     padding-bottom: 10px;
     margin: 0px;
-    padding-right: 20vw;
+   ;
 `;
 
 export const ContainerPedidos = styledComponents.div`
@@ -119,13 +113,23 @@ export const ContainerPedidos = styledComponents.div`
     flex-direction: column;
     justify-content: center;
     display: flex;
-    border: 2px solid #B8B8B8;
+    border: 2px solid #000;
     border-radius: 10px;
-    width: 95%;
     margin-left: 1vh;
     font-weight: regular;
     font-family: 'Roboto';
+    margin-top: 1rem;
+    width: 345px;
+    h3{
+        margin: 5px 10px 5px 10px;
+        font-family: 'Roboto';
+    }
+    h5{ margin:1rem;
+        font-family: 'Roboto';
+    }
+
 `;
+
 export const ContainerPedidosH2 = styledComponents.h2`
     background-color: white;
     color: #E8222E;

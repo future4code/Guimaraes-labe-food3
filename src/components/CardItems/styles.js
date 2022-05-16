@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 export const ContainerProduct = styled.div`
   height: 9rem;
-  margin: 0.438rem 0 0;
+  margin: 0.438rem 0 1rem;
   border-radius: 8px;
   border: solid 1px ;
   display: flex;

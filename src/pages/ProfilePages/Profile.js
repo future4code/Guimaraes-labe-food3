@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Historico, HistoricoH1, ContainerPedidos, buttonStyle } from './ProfileStyles';
-import { FourFoodFooter } from './styles';
+import { Historico, HistoricoH1, ContainerPedidos, listStyle} from './ProfileStyles';
+import { FourFoodFooter} from './styles';
 import Footer from '../../components/Footer/Footer';
 import { goToAddress, goBack } from '../../routes/coordinator';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { BASE_URL } from "../../constant/urls";
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Arrow from '../../components/Arrow/Arrow';
 import Header from '../../components/Header/Header';
+import './styles.css'
 
 const Profile = () => {
 
@@ -108,9 +109,9 @@ const Profile = () => {
         return (
             <div class="card" style={{ width: "15rem" }} key={index}>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{item.restaurantName} </li>
-                    <li class="list-group-item">{item.totalPrice}</li>
-                    <li class="list-group-item">{date}</li>
+                    <h3 class="card-header">{item.restaurantName} </h3>
+                    <h5 class="card-header">R$ {Number(item.totalPrice).toFixed(2)}</h5>  
+                    <listStyle>{date}</listStyle>
                 </ul>
             </div>
         )
@@ -118,45 +119,41 @@ const Profile = () => {
     )
     return (
         <div class="container">
-                <Arrow onClick={() => goBack(navigate)} showTitle={true} title={' Meu perfil'} />
-                <Header />
-                {infos && <>
-                    <div className="container py-5">
-                        <div className="row py-4">
-                            <div class="card">
-                                <h3 class="card-header">Nome: {infos.name}</h3>
-                                <div class="card-body">
-                                    <h5 class="card-title">E-mail{infos.email}</h5>
-                                    <h5 class="card-title"> CPF: {infos.cpf}</h5>
-                                </div>
-                            </div>
-                        </div>
+            <Arrow onClick={() => goBack(navigate)} showTitle={true} title={' Meu perfil'} />
+            <Header />
+            <ContainerPedidos>
+                <div class="card">
+                    <h3 class="card-header">Nome: {infos.name}</h3>
+                    <div class="card-body">
+                        <h5 class="card-title">E-mail{infos.email}</h5>
+                        <h5 class="card-title"> CPF: {infos.cpf}</h5>
                     </div>
-                    <div class="card">
-                        <h3 class="card-header">Endereço cadastrado</h3>
-                        <div class="card-body">
-                            <h5 class="card-title">{infos.address}</h5>
-                            <button type="button"  onClick={() => goToAddress(navigate)}>Editar Endereço</button>
-                        </div>
+                </div>
+                <div class="card mb-2">
+                    <h3 class="card-header">Endereço cadastrado</h3>
+                    <div class="card-body">
+                        <h5 class="card-title">{infos.address}</h5>
+                        <button type="button" id='edit-button' onClick={() => goToAddress(navigate)}>Editar Endereço</button>
                     </div>
+                </div>
+
+            </ContainerPedidos>
+            <Historico>
+                <HistoricoH1>Histórico de pedidos</HistoricoH1>
+            </Historico>
+            <ContainerPedidos>
+                <>
+                    {loading && <CircularProgress />}
+                    {!loading && orders && orders.length > 0 && orderList}
+                    {!loading && orders && orders.length === 0 && (
+                        <h2> Você não tem nenhum pedido</h2>
+                    )}
                 </>
-                }
-                <Historico>
-                    <HistoricoH1>Histórico de pedidos</HistoricoH1>
-                </Historico>
-                <ContainerPedidos>
-                    <>
-                        {loading && <CircularProgress />}
-                        {!loading && orders && orders.length > 0 && orderList}
-                        {!loading && orders && orders.length === 0 && (
-                            <h2> Você não tem nenhum pedido</h2>
-                        )}
-                    </>
-                </ContainerPedidos>
-                <FourFoodFooter>
-                    <Footer />
-                </FourFoodFooter>
-                <button  type='button' onClick={logout}>Logout</button>     
+            </ContainerPedidos>
+            <FourFoodFooter>
+                <Footer />
+            </FourFoodFooter>
+            <button type='button' onClick={logout}>Logout</button>
         </div>
     );
 }

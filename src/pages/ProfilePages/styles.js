@@ -47,19 +47,8 @@ export const FourFoodFooter = styled.div`
     display: flex;
     justify-content: center;  
     bottom: 0; 
-    position: absolute;
-    position: fixed;
     `
 
 export const StyledButton = styled(Button) `
 align-self: flex-end;
-`
-
-export const buttonStyle = styled.div`
-
-button{
-    background-color:E8222E;
-    c
-
-}
 `
