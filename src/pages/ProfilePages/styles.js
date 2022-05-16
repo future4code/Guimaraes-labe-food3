@@ -44,10 +44,12 @@ export const Perfil = styled.div`
 `
 
 export const FourFoodFooter = styled.div`
-   display: flex;
+    display: flex;
     justify-content: center;  
-    position: fixed;
     bottom: 0; 
+    position: absolute;
+    margin-left: 60vw;
+    position: fixed;
     `
 
 export const StyledButton = styled(Button) `

@@ -6,7 +6,6 @@ import { login } from "../../Services/auth"
 import { useNavigate} from 'react-router-dom'
 import { goToAddress, goToFourFood } from "../../routes/coordinator";
 import { ToastContainer, toast } from 'react-toastify';
-import { message } from "../../utils/message";
 import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext";
 import CircularProgress from '@material-ui/core/CircularProgress'

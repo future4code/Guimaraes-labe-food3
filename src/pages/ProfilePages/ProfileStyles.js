@@ -123,6 +123,8 @@ export const ContainerPedidos = styledComponents.div`
     border-radius: 10px;
     width: 100%;
     margin-left: 1vh;
+    font-weight: regular;
+    font-family: 'Roboto';
 `;
 export const ContainerPedidosH2 = styledComponents.h2`
     background-color: white;
@@ -169,5 +171,9 @@ export const ProfileContainer = styledComponents.div`
         border-radius: 10px;
         height: 2.5rem;
         color: #fff;
+    }
+    li{
+        list-style-type: none;
+        
     }
 `;
