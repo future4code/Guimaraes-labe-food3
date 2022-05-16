@@ -19,7 +19,7 @@ const CardRestaurant =  ({
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="120"
         image={image}
         alt="foto restaurante"
       />

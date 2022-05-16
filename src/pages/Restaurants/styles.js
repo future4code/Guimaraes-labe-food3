@@ -72,12 +72,12 @@ export const ContainerProducts = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 640px;
-    overflow-x: auto;
+    height: 100vh;
+    overflow-y: auto;
     `
     export const FourFoodFooter = styled.div`
     display: flex;
     justify-content: center;  
-    position: fixed;
     bottom: 0;
+    margin-top: 10px;
     `

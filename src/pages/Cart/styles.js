@@ -6,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 640px;
+    height: 100vh;
     overflow-x: auto;
   margin: 60px 0;
   font-family: "Roboto";
@@ -39,6 +39,7 @@ export const CartDetails = styled.div`
   padding: 1rem 1rem;
 `
 export const StyledButton = styled.button`
+display: flex;
   width: 100%;
   padding: 1rem;
   display: block;
@@ -46,9 +47,16 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: 2px;
   background-color: ${(props) =>
-    props.desabilitado ? "rgba(232, 34, 46, 0.5)" : '#e8222e' };
+    props.desabilitado ? "E8222E" : '#e8222e' };
   cursor: pointer;
   margin: 20px 0;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-family: 'Roboto';
+  height: 3rem;
+  border-radius: 5px;
+
 `
 export const RestaurantDetails = styled.div`
   display: flex;
@@ -137,7 +145,6 @@ export const AddressContentContentContainer = styled.div`
 export const FourFoodFooter = styled.div`
     display: flex;
     justify-content: center;  
-    position: fixed;
-    bottom: 0;
+
 `
 

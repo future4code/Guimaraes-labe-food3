@@ -21,7 +21,7 @@ import {
   ModalSelect,
   StyledButton,
   ContainerProducts,
-  FourFoodFooter
+  FourFoodFooter,
 } from "./styles"
 
 import { getRestaurantDetail } from '../../Services/services';
@@ -126,8 +126,8 @@ const RestaurantPage = () => {
 
   return (
     <ContainerProducts>
-      <Arrow onClick={() => goToFourFood(navigate)} showTitle={true} title={'Restaurante'} />
-      <Header />
+     <Arrow onClick={() => goToFourFood(navigate)} showTitle={true} title={'Restaurante'} /> 
+      <Header  heigth={'2rem'}/>
       {loading && <CircularProgress />}
       <styleRestaurant>
         {!loading && renderRestaurant}
@@ -170,9 +170,7 @@ const RestaurantPage = () => {
       </ContainerModal>
       <FourFoodFooter>
       <Footer/>
-      </FourFoodFooter>
-      <Footer/>
-
+      </FourFoodFooter> 
     </ContainerProducts>
   )
 }
