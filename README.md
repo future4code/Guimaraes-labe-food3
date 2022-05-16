@@ -125,7 +125,7 @@ Desenvolvido por:
 </h2>
 <table align="center">
   <tr>
-      <td align="center"><a href="https://github.com/FIXER3600">
+      <td align="center"><a href="https://github.com/crhisfoz">
         <img src="https://avatars.githubusercontent.com/u/89948060?v=4" style="border-radius: 50%" width="100px" alt="Imagem do perfil do Guilherme"/>
       <br />
         <sub><b>Crhistian Felipe da Silva</b></sub>
