@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
-import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext"
 import { GlobalOrderContext } from "../../Context/OrderContent/GlobalOrderContext"
 import { ContainerDetails, ContainerProduct, QuantityContainer } from "./styles"
 
 export const CardItemAdd  = ({ product, openModal }) => {
 
-  const { cart, setCart,dataRestaurant,setDataRestaurant } = useContext(GlobalOrderContext)
+  const { cart, setCart} = useContext(GlobalOrderContext)
 
 
   const [onCart, setOnCart] = useState(0)

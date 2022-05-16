@@ -1,5 +1,5 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext,useState} from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { login } from "../../Services/auth"
@@ -49,11 +49,16 @@ const LoginForm = () => {
         }
         
         if(retorno.data.status === 401){
+            setLoading(false);
             toast.error(retorno.data.error);
+            toast.error('Verifique os Dados digitados')
+         
         }
 
         if(retorno.data.status === 404){
-            toast.error(retorno.data.error);
+            setLoading(false);
+            toast.error(retorno.data.error)
+            toast.error('Verifique os Dados digitados')
         }
     }
 
@@ -88,6 +93,7 @@ const LoginForm = () => {
                 required
                 InputLabelProps={{ shrink: true }}
                 type="password"
+                password={true}
             />
 
             <Button

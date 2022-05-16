@@ -1,5 +1,5 @@
 import { Button, TextField } from "@material-ui/core";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import useForm from "../../hooks/useForm";
 import { InputsContainer } from "./styles";
 import { signup } from "../../Services/auth"
@@ -34,7 +34,7 @@ const SignUpForm = () => {
             password: form.password
         }
         
-        if(form.password != form.confirmarSenha){
+        if(form.password !== form.confirmarSenha){
             return toast.error(message[1])
         }
 

@@ -1,8 +1,6 @@
-import React, { useContext } from "react"
+import React from "react"
 
 import { CardContainer, Rectangle} from './styles'
-
-import logo from '../../assets/image.jpg'
 
 import { goToRestaurant } from '../../routes/coordinator'
 import { useNavigate } from "react-router-dom"

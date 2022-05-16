@@ -37,6 +37,7 @@ export const FourFoodSearch = styled.div`
         height: 3.5rem;
         border-radius: 2px;
         margin-top: 10px;
+        margin-bottom: 10px;
         border: solid 1px var(--greyish);
     }
 `;
@@ -45,3 +46,17 @@ export const FourFoodFooter = styled.div`
     
     justify-content: center;
     `
+    export const ProductCategory = styled.div`
+    letter-spacing: -0.29px;
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.29px;
+    margin-top: 1rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+  `;

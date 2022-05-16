@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HeaderStyle, Historico, HistoricoH1, ContainerPedidos, ProfileContainer } from './ProfileStyles';
+import { Historico, HistoricoH1, ContainerPedidos, buttonStyle } from './ProfileStyles';
 import { FourFoodFooter } from './styles';
 import Footer from '../../components/Footer/Footer';
 import { goToAddress, goBack } from '../../routes/coordinator';
@@ -10,11 +10,12 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import Arrow from '../../components/Arrow/Arrow';
 import Header from '../../components/Header/Header';
 
-
 const Profile = () => {
 
-    const infoUser = JSON.parse(localStorage.getItem('infoUser'))
+    const navigate = useNavigate()
 
+
+    const [infos, setInfos] = useState([]);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -30,7 +31,7 @@ const Profile = () => {
             };
             try {
                 const { data } = await axios.get(`${BASE_URL}/orders/history`, headers)
-                setOrders(data);
+                setOrders(data.orders);
                 setLoading(false)
             } catch (error) {
                 console.log(error)
@@ -40,11 +41,31 @@ const Profile = () => {
         requestOrders();
     }, [])
 
+    useEffect(() => {
 
-    console.log('pedidos', orders)
+        const requestInfos = async () => {
+            setLoading(true)
 
-
-    const navigate = useNavigate();
+            const headers = {
+                headers: {
+                    auth: localStorage.getItem("token"),
+                },
+            };
+            try {
+                const { data } = await axios.get(`${BASE_URL}/profile`, headers)
+                setInfos(data.user);
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+                    ;
+            }
+        };
+        requestInfos();
+    }, [])
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
 
     const convertMonth = (month) => {
         switch (month) {
@@ -77,57 +98,56 @@ const Profile = () => {
         }
     }
 
-    const convertDate = (order) => {
-        const date = new Date(order)
+    const convertDate = (dateOfOrder) => {
+        const date = new Date(dateOfOrder)
         return `${date.getDate()} de ${convertMonth(date.getMonth() + 1)} de ${date.getFullYear()}`
     }
-    const ordersList = async () => {
-        orders &&
-            orders.map((item, index) => {
-                const date = convertDate(item.createdAt)
-                return (<div class="card" style="width: 18rem;" key={index}
-                >
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{item.restaurantName}</li>
-                        <li class="list-group-item">{item.totalPrice}</li>
-                        <li class="list-group-item">data={date}</li>
-                    </ul>
-                </div>)
-            });
+
+    const orderList = orders && orders.map((item, index) => {
+        const date = convertDate(item.createdAt)
+        return (
+            <div class="card" style={{ width: "15rem" }} key={index}>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{item.restaurantName} </li>
+                    <li class="list-group-item">{item.totalPrice}</li>
+                    <li class="list-group-item">{date}</li>
+                </ul>
+            </div>
+        )
     }
-
-
+    )
     return (
-        infoUser && <>
-            <ProfileContainer >
-            <Arrow onClick={() => goBack(navigate)} showTitle={true} title={' Meu perfil'} />
-            <Header />
-                <div className="container py-5">
-                    <div className="row py-4">
-                <div class="card">
-                    <h3 class="card-header">Nome: {infoUser.data.name.toUpperCase()}</h3>
-                    <div class="card-body">
-                        <h5 class="card-title">E-mail{infoUser.data.email}</h5>
-                        <h5 class="card-title"> CPF: {infoUser.data.cpf}</h5>
+        <div class="container">
+                <Arrow onClick={() => goBack(navigate)} showTitle={true} title={' Meu perfil'} />
+                <Header />
+                {infos && <>
+                    <div className="container py-5">
+                        <div className="row py-4">
+                            <div class="card">
+                                <h3 class="card-header">Nome: {infos.name}</h3>
+                                <div class="card-body">
+                                    <h5 class="card-title">E-mail{infos.email}</h5>
+                                    <h5 class="card-title"> CPF: {infos.cpf}</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
+                    <div class="card">
+                        <h3 class="card-header">Endereço cadastrado</h3>
+                        <div class="card-body">
+                            <h5 class="card-title">{infos.address}</h5>
+                            <button type="button"  onClick={() => goToAddress(navigate)}>Editar Endereço</button>
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <h3 class="card-header">Endereço cadastrado</h3>
-                    <div class="card-body">
-                        <h5 class="card-title">{infoUser.data.address}</h5>
-                        <button type="button"  onClick={() => goToAddress(navigate)}>Editar Endereço</button>
-                    </div>
-                </div>
+                </>
+                }
                 <Historico>
                     <HistoricoH1>Histórico de pedidos</HistoricoH1>
                 </Historico>
                 <ContainerPedidos>
                     <>
                         {loading && <CircularProgress />}
-                        {!loading && orders && orders.length > 0 && ordersList}
+                        {!loading && orders && orders.length > 0 && orderList}
                         {!loading && orders && orders.length === 0 && (
                             <h2> Você não tem nenhum pedido</h2>
                         )}
@@ -136,11 +156,8 @@ const Profile = () => {
                 <FourFoodFooter>
                     <Footer />
                 </FourFoodFooter>
-            </ProfileContainer>
-        </>
-
-
-
+                <button  type='button' onClick={logout}>Logout</button>     
+        </div>
     );
 }
 export default Profile;

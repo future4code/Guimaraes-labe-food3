@@ -10,7 +10,7 @@ export const getRestaurant = (url, initialState) => {
   const [category, setCategory] = useState([])
   const [filter, setFilter] = useState(restaurants)
 
-
+console.log('filtro', filter)
   useEffect(() => {
 
     const token = localStorage.getItem('token')
@@ -133,3 +133,4 @@ export const getActiveOrder = () => {
     });
     return  [activeOrder, setActiveOrder] 
 };
+
