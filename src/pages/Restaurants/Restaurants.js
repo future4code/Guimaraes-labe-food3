@@ -30,7 +30,7 @@ const RestaurantPage = () => {
   const { data, loading } = getRestaurantDetail({}, `/restaurants/${param.id}`)
   const [quantity, setQuantity] = useState(0)
   const [open, setOpen] = useState(false)
-  const { cart, setCart, dataRestaurant, setDataRestaurant } = useContext(GlobalOrderContext)
+  const { cart, setCart, setDataRestaurant } = useContext(GlobalOrderContext)
   const [prod, setProd] = useState({})
 
   useEffect(() => {

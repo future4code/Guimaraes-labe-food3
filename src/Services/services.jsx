@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { GlobalStateContext } from  '../Context/GlobalState/GlobalStateContext'
 import { BASE_URL } from "../constant/urls";
 
 
