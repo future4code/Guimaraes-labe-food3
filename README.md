@@ -59,7 +59,6 @@ Este projeto atual temos que criar uma aplicação nos moldes do App Ifood
 ➡️Logout<br>
 ➡️Escolha do restaurante<br>
 ➡️Busca do restaurante por nome<br>
-➡️Escolha do tipo de comida<br>
 ➡️Escolha de produtos com a quantidade<br>
 ➡️Adicionar ao carrinho<br>
 ➡️Excluir do carrinho<br>
@@ -70,6 +69,7 @@ Este projeto atual temos que criar uma aplicação nos moldes do App Ifood
 
 ❎Responsividade Desktop página e Perfil <br>
 ❎Bug Tela de Carrinho, não seta o carrinho para 0 produto depois de efetuado o pedido<br>
+❎Escolha do tipo de comida, o filtro estava funcionando direito, porém do nada deu um bug e parou de funcionar<br>
 
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
@@ -77,7 +77,7 @@ Este projeto atual temos que criar uma aplicação nos moldes do App Ifood
 <h2 id="como-usar">:computer: Como Usar </h2>
 📱Faça seu cadastro com nome, e-mail, CPF e senha.<br>
 📱Adicione seu endereço completo para poder efetuar os pedidos.<br>
-📱Escolha o tipo de comida que deseja ou busque pelo seu restaurante favorito.<br>
+📱Busque pelo seu restaurante favorito.<br>
 📱Faça seu pedido e confirme a forma de pagamento, você terá a soma dos itens pedido acrescido do valor da entrega para a sua região.<br>
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
@@ -104,6 +104,18 @@ $ npm start
 
 <h2 id="images">🖼️ Imagens </h2>
 
+<h3 id="entrada">Tela de Login</h3>
+<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537249-d1318c0f-d84d-42eb-8b79-ebc142a49900.jpg" />
+<h4 align="right"><a href="#topo">Topo</a></h4>
+
+<h3 id="entrada">Tela do Restaurante</h3>
+<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537608-9fc46356-d4bc-4060-b90d-48fe7b876c09.jpg" />
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="entrada">Tela de Login</h3>
+
+<img alt="Tela de Carrinho" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537616-53e3f664-f95e-4f12-a65c-98d19af4f005.jpg" />
+<h4 align="right"><a href="#topo">Topo</a></h4>
+<h3 id="entrada">Tela de Login</h3>
 
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
