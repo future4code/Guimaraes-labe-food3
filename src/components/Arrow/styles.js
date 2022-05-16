@@ -8,10 +8,12 @@ export const ArrowContainer = styled.div`
     justify-content: center;
     height: 10vh;
 
+
     border-bottom: 1px solid var(--black);
 
     .arrow-back-ios{
         margin-left: 1em;
+
     }
 
     .arrow-back-ios:hover{
@@ -21,6 +23,7 @@ export const ArrowContainer = styled.div`
     span{
         display: flex;
         margin: 0 auto;
+        font-size: 2rem;
 
         margin-top: -1.4rem;
     }

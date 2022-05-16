@@ -29,3 +29,7 @@ export const goToCart = (navigate, id) =>{
 export const goToRestaurant = (navigate, id) => {
     navigate(`/restaurant/${id}`)
 }
+
+export const goBack = (navigate) =>{
+    navigate(-1)
+}

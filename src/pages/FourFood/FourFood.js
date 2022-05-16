@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import Card from '../../components/Card/Card'
 import Filtro from '../../components/Filtro/Filtro'
 import Footer from '../../components/Footer/Footer'
@@ -6,6 +7,10 @@ import Search from '../../components/Search/Search'
 import { BASE_URL } from '../../constant/urls';
 import { getRestaurant } from '../../Services/services'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContext'
+import {
+    goToCart
+} from '../../routes/coordinator';
 
 import {
     FourFoodCardContainer,
@@ -14,16 +19,21 @@ import {
     FourFoodFooter,
 
 } from './styles'
+import { ActiveOrder } from '../../components/ActiveOrder/ActiveOrder'
 
 const FourFood = () => {
 
-    const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
+    const navigate = useNavigate()
 
+    const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
+
+    const { getActiveOrder } = useContext(GlobalOrderContext)
 
     const onChangeInput = (ev) => {
         setInput(ev.target.value)
     }
+
 
     const showRestaurant =
         restaurants &&
@@ -49,7 +59,7 @@ const FourFood = () => {
 
     return (<>
         <FourFoodHeader>
-            <h5 className='FourFood-header'>FourFood</h5>
+            <h2 className='FourFood-header'>FourFood</h2>
         </FourFoodHeader>
 
         <FourFoodSearch>
@@ -71,8 +81,9 @@ const FourFood = () => {
 
         </FourFoodCardContainer>
         <FourFoodFooter>
-            <Footer />
+            <Footer onCLick={()=>goToCart(navigate)}/>
         </FourFoodFooter>
+        {getActiveOrder? <ActiveOrder/>: ''}
     </>
     )
 }

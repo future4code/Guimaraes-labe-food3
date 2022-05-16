@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Button  from "@material-ui/core/Button"
 
 export const InputsContainer = styled.div`
     display: flex;
@@ -40,4 +41,15 @@ export const Perfil = styled.div`
     width: 80vw;
     max-width: 450px;
     margin-top: -10vh;
+`
+
+export const FourFoodFooter = styled.div`
+   display: flex;
+    justify-content: center;  
+    position: fixed;
+    bottom: 0; 
+    `
+
+export const StyledButton = styled(Button) `
+align-self: flex-end;
 `

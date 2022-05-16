@@ -1,69 +1,47 @@
-import React, {useState} from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { GlobalStateContext } from "../../Context/GlobalState/GlobalStateContext"
+import { GlobalOrderContext } from "../../Context/OrderContent/GlobalOrderContext"
+import { ContainerDetails, ContainerProduct, QuantityContainer } from "./styles"
 
-import { 
-    CardItemsContainer, 
-    Rectangle,
-    TotalItens
-  } from './styles'
+export const CardItemAdd  = ({ product, openModal }) => {
+
+  const { cart, setCart,dataRestaurant,setDataRestaurant } = useContext(GlobalOrderContext)
 
 
-export const CardItemAdd = (product) => {
-    
-    const [quantity, setQuantity]  = useState(0)
-    const [showPopUp, setShowPopUp] = useState(false);
-    const [item , setItem] = useState(0);
-    const options = [0,1,2,3,4,5,6,7,8,9,10]
+  const [onCart, setOnCart] = useState(0)
 
-    const onChangeItem = (event) => {
-      event.persist();
-      setItem(event.target.value)
-    }
+  const removeFromCart = (product) => {
+    setCart(
+      cart.filter((prod) => {
+        return product.id !== prod.id
+      })
+    )
+    localStorage.setItem("cart", JSON.stringify(cart))
+    setOnCart(0)
+  }
 
-    const onClickCloseItens = () => {
-      setShowPopUp(false)
-      setQuantity(item)
-
-    }
-
-    const handleQuantity = () =>{
-      setShowPopUp(true)
-    }
-console.log("props recebida", product )
+  useEffect(() => {
+    cart.map((prod) => {
+      if (prod.id === product.id) return setOnCart(prod.quantity)
+      else return false
+    })
+  }, [cart, product.id]) 
 
   return (
-    <CardItemsContainer>
-       <Rectangle>
-            <div className="container-image">
-            <img src={product.product.photoUrl} /> 
-            </div>       
-            <div className="info-items">
-              { quantity != 0 && <button className="button-quantity">{quantity}</button> }
-           <span className="title-normal">{product.product.name}</span>
-                <span className="description">{product.product.description}</span>
-                <span className="price-add">R$ {Number(product.product.price).toFixed(2)}</span>      
-              <button className="button-add" onClick={() => handleQuantity()}>{quantity != 0? 'remover' : 'adicionar'}</button>
-            </div>
-        </Rectangle>
-
-        {showPopUp && 
-         <TotalItens>
-         <span>Selecione a quantidade desejada</span>
-
-         <div className="select-itens">
-           <select
-             onChange={(event)=>onChangeItem(event)} value={item}
-           >
-             {options.map((item, index)=>{
-               return (<option key={index} value={item}>{item}</option>)
-             })}
-           </select>
-         </div>
-
-         <span className="add-itens-card" onClick={() => onClickCloseItens() }>ADICIONAR AO CARRINHO</span>
-
-      </TotalItens>
-      }
-     
-      </CardItemsContainer>
+    <ContainerProduct>
+      <img src={product.photoUrl} alt="Imagem do produto" />
+      <ContainerDetails>
+        <h3>{product.name}</h3>
+        <p>{product.description}</p>
+        <span>R$ {Number(product.price).toFixed(2)}</span>
+        {!onCart ? (
+          <button onClick={() => openModal(product)}>adicionar</button>
+        ) : (
+          <button onClick={() => removeFromCart(product)}>remover</button>
+        )}
+        {onCart ? <QuantityContainer>{onCart}</QuantityContainer> : ""}
+      </ContainerDetails>
+    </ContainerProduct>
   )
 }
+
