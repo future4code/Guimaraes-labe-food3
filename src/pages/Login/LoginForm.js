@@ -50,11 +50,16 @@ const LoginForm = () => {
         }
         
         if(retorno.data.status === 401){
+            setLoading(false);
             toast.error(retorno.data.error);
+            toast.error('Verifique os Dados digitados')
+         
         }
 
         if(retorno.data.status === 404){
-            toast.error(retorno.data.error);
+            setLoading(false);
+            toast.error(retorno.data.error)
+            toast.error('Verifique os Dados digitados')
         }
     }
 
@@ -89,6 +94,7 @@ const LoginForm = () => {
                 required
                 InputLabelProps={{ shrink: true }}
                 type="password"
+                password={true}
             />
 
             <Button

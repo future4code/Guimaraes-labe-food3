@@ -12,6 +12,7 @@ import { GlobalOrderContext } from '../../Context/OrderContent/GlobalOrderContex
 import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
 import Arrow from '../../components/Arrow/Arrow';
 import { goToFourFood } from "../../routes/coordinator";
+import Footer from '../../components/Footer/Footer';
 
 import {
   ContainerModal,
@@ -20,6 +21,7 @@ import {
   ModalSelect,
   StyledButton,
   ContainerProducts,
+  FourFoodFooter
 } from "./styles"
 
 import { getRestaurantDetail } from '../../Services/services';
@@ -166,6 +168,10 @@ const RestaurantPage = () => {
           </StyledButton>
         </ModalSelect>
       </ContainerModal>
+      <FourFoodFooter>
+      <Footer/>
+      </FourFoodFooter>
+      <Footer/>
 
     </ContainerProducts>
   )
