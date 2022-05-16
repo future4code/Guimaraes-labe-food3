@@ -1,6 +1,6 @@
-<h1 align="center">Labe 4 Foods - A - Labenu</h1>
+<h1 align="center">Labe 4Foods - A - Labenu</h1>
 
-Link do Surge: <a href="http://labe4foodjoy.surge.sh/">Labe4Foods</a>
+Link do Surge: <a href="http://gentle-orange.surge.sh/">Labe4Foods</a>
 
 Dados de Entrada <br>
 👤usuário: testelabenu2022@email.com<br>
@@ -67,7 +67,7 @@ Este projeto atual temos que criar uma aplicação nos moldes do App Ifood
 
 <h2 id="nfunciona">:rocket: O que ainda não funciona </h2>
 
-❎Responsividade Desktop página e Perfil <br>
+❎Responsividade Desktop da página de Perfil <br>
 ❎Bug Tela de Carrinho, não seta o carrinho para 0 produto depois de efetuado o pedido<br>
 ❎Escolha do tipo de comida, o filtro estava funcionando direito, porém do nada deu um bug e parou de funcionar<br>
 
@@ -105,15 +105,15 @@ $ npm start
 <h2 id="images">🖼️ Imagens </h2>
 
 <h3 id="entrada">Tela de Login</h3>
-<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537249-d1318c0f-d84d-42eb-8b79-ebc142a49900.jpg" />
+<img alt="Tela de entrada" width="800"height="537" src="https://user-images.githubusercontent.com/89948060/168537249-d1318c0f-d84d-42eb-8b79-ebc142a49900.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
 <h3 id="entrada">Tela do Restaurante</h3>
-<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537608-9fc46356-d4bc-4060-b90d-48fe7b876c09.jpg" />
+<img alt="Tela de entrada" width="800" height="537" src="https://user-images.githubusercontent.com/89948060/168537608-9fc46356-d4bc-4060-b90d-48fe7b876c09.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 <h3 id="entrada">Tela de Login</h3>
 
-<img alt="Tela de Carrinho" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537616-53e3f664-f95e-4f12-a65c-98d19af4f005.jpg" />
+<img alt="Tela de Carrinho" width="800" height="537" src="https://user-images.githubusercontent.com/89948060/168537616-53e3f664-f95e-4f12-a65c-98d19af4f005.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 <h3 id="entrada">Tela de Login</h3>
 
@@ -125,7 +125,7 @@ Desenvolvido por:
 </h2>
 <table align="center">
   <tr>
-      <td align="center"><a href="https://github.com/FIXER3600">
+      <td align="center"><a href="https://github.com/crhisfoz">
         <img src="https://avatars.githubusercontent.com/u/89948060?v=4" style="border-radius: 50%" width="100px" alt="Imagem do perfil do Guilherme"/>
       <br />
         <sub><b>Crhistian Felipe da Silva</b></sub>
