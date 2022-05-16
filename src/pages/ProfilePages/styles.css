@@ -11,7 +11,6 @@ button{
     border-radius: 5px;
     height: 2rem;
     font-family: 'Roboto';
-    width: 8rem;
     margin-top: 5px;
 }
 
@@ -20,4 +19,5 @@ button{
     align-self: center;
     font-family: 'Roboto';
     font-weight: bold;
+    width: 8rem;
 }

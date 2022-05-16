@@ -66,13 +66,13 @@ export const ContainerDetails = styled.div`
     padding: 0.5rem 1.281rem 0.563rem 1.344rem;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 8px;
-    background-color: transparent;
     text-align: center;
     font-weight: bold;
     border: solid 1px ;
     position: absolute;
     right: 0rem;
     bottom: 0rem;
+    font-family:'Roboto'
   }
 `
 
