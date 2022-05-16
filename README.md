@@ -1,6 +1,6 @@
 <h1 align="center">Labe 4 Foods - A - Labenu</h1>
 
-Link do Surge: <a href="http://labe4foodjoy.surge.sh/">Labe4Foods</a>
+Link do Surge: <a href="http://gentle-orange.surge.sh/">Labe4Foods</a>
 
 Dados de Entrada <br>
 👤usuário: testelabenu2022@email.com<br>
