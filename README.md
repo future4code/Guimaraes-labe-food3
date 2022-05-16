@@ -105,15 +105,15 @@ $ npm start
 <h2 id="images">🖼️ Imagens </h2>
 
 <h3 id="entrada">Tela de Login</h3>
-<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537249-d1318c0f-d84d-42eb-8b79-ebc142a49900.jpg" />
+<img alt="Tela de entrada" width="600"height="537" src="https://user-images.githubusercontent.com/89948060/168537249-d1318c0f-d84d-42eb-8b79-ebc142a49900.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 
 <h3 id="entrada">Tela do Restaurante</h3>
-<img alt="Tela de entrada" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537608-9fc46356-d4bc-4060-b90d-48fe7b876c09.jpg" />
+<img alt="Tela de entrada" width="600" height="537" src="https://user-images.githubusercontent.com/89948060/168537608-9fc46356-d4bc-4060-b90d-48fe7b876c09.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 <h3 id="entrada">Tela de Login</h3>
 
-<img alt="Tela de Carrinho" width="315" height="537" src="https://user-images.githubusercontent.com/89948060/168537616-53e3f664-f95e-4f12-a65c-98d19af4f005.jpg" />
+<img alt="Tela de Carrinho" width="600" height="537" src="https://user-images.githubusercontent.com/89948060/168537616-53e3f664-f95e-4f12-a65c-98d19af4f005.jpg" />
 <h4 align="right"><a href="#topo">Topo</a></h4>
 <h3 id="entrada">Tela de Login</h3>
 
