@@ -3,14 +3,10 @@ import styled from 'styled-components'
 export const RestaurantConteiner = styled.div`
     display: flex;
     margin: 0 auto;
-
     flex-direction: column;
-
     width: 22.5rem;
     height: 52.125rem;
-
     border: 1px solid black;
-
 `;
 
 export const RestaurantDetails = styled.div`
@@ -189,13 +185,73 @@ export const RestaurantDetails = styled.div`
     }
 
 `;
+export const FooterElements = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 22.5rem;
+    height: 7.5rem;
+    margin: 0.5rem;
+    margin-left: 32rem;
+    padding: 0 1rem;
+    margin-top: 250vh;
+    align-items:center;
+    justify-content: center;
 
+    .footer-card{
+        display: flex;
+        width: 20.5rem;
+        height: 7rem;
+        margin: 0.438rem 0 0;
+        border-radius: 8px;
+        border: solid 1px var(--greyish);
+
+        .footer-card-img{
+            width: 6rem;
+            height: 7rem;
+            margin: 0 1rem 0 0;
+            object-fit: contain;
+        }
+
+        .footer-card-info{
+            display: flex;
+            flex-direction: column;
+
+            .footer-card-name{
+                width: 10.438rem;
+                height: 1.125rem;
+                margin: 1.125rem 3.063rem 0.1rem 0.1rem;
+                font-family: Roboto;
+                font-size: 1rem;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: -0.39px;
+                color: var(--lipstick);
+            }
+
+            .footer-card-description{
+                width: 12.5rem;
+                height: 1.875rem;
+                margin: 0.5rem 0.1rem 0.25rem 0.1rem;
+
+                font-family: Roboto;
+                font-size: 0.75rem;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: -0.29px;
+                color: var(--greyish);
+            }
+        }
+    }
+`;
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 360px;
-    height: 196px;
+    height: ajust to content;
     padding: 0 0 16px;
 
     .image{

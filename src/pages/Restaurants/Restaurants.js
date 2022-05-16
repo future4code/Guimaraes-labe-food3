@@ -9,7 +9,7 @@ import { CardItemAdd } from '../../components/CardItems/CardItemAdd'
 import { getRestaurantDetail } from "../../Services/services";
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Footer from "../../components/Footer/Footer";
-
+import { FooterElements } from "./styles";
 import {
   RestaurantConteiner,
   CardContainer,
@@ -80,11 +80,10 @@ const products = [...new Set(categoriesList)].map((category) => {
     {products}
   
   </RestaurantConteiner>
-  <FourFoodFooter>
+  <FooterElements>
             <Footer />
-        </FourFoodFooter>
+        </FooterElements>
   </>
-
   )
 }
 
