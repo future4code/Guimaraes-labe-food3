@@ -43,7 +43,7 @@ console.log('filtro', filter)
     };
     fetch();
   }, []);
-
+  console.log('categoria na requisicao', category)
   return [restaurants, loading, error, category, setRestaurants, filter, setFilter];
 };
 
@@ -110,7 +110,7 @@ export const getRestaurantDetail = (initialState, path) => {
       }
     };
     fetch();
-  }, [path]);
+  }, []);
 
 return { data, loading };
 };

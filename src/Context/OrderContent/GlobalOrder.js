@@ -1,9 +1,10 @@
-import React, {useState } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constant/urls";
 import {GlobalOrderContext} from './GlobalOrderContext'
 
 const GlobalOrder = (props) => {
+
 
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart"))
@@ -17,6 +18,7 @@ const GlobalOrder = (props) => {
   );
   const [activeOrder, setActiveOrder] = useState({});
   const [loading, setLoading] = useState(false)
+ 
 
   const getActiveOrder = () => {
     setLoading(true)
@@ -34,6 +36,12 @@ const GlobalOrder = (props) => {
         window.alert("Erro ao realizar solicitação.\n Tente novamente.");
       });
   };
+
+
+  useEffect(()=>{
+    localStorage.setItem('cart', '{}')
+  },[cart])
+ 
   return (
     <GlobalOrderContext.Provider
     value={{
