@@ -33,7 +33,7 @@ import {
 
 const Cart = () => {
  
-  const { cart, dataRestaurant, loading, } = useContext(GlobalOrderContext)
+  const { cart, dataRestaurant, loading, setCart} = useContext(GlobalOrderContext)
   const infoUser = JSON.parse(localStorage.getItem('infoUser'))
 
   const navigate = useNavigate()
@@ -75,8 +75,11 @@ const Cart = () => {
       .catch((err) => {
         alert(err.response.data.message)
       })
-      goToFourFood(navigate)
+      setCart('cart', [])
+/*       goToFourFood(navigate) */   
   }
+
+  
   const valor = cart.map((c) => {
     return c.quantity * c.price
   })
@@ -86,12 +89,6 @@ const Cart = () => {
   }
   let somaWithFrete = soma + dataRestaurant.shipping
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart))
-    renderCartFun()
-  }, [cart])
-
-console.log('form',form)
 
   return (
     <Container>

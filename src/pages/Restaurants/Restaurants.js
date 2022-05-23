@@ -59,14 +59,19 @@ const RestaurantPage = () => {
   }
 
   const addToCart = () => {
-    if (quantity > 0)
+    if (quantity > 0){
       setCart([...cart, { ...prod, quantity: quantity }])
-    setQuantity(0)
-    setDataRestaurant(data.restaurant)
-    localStorage.setItem("restaurant", JSON.stringify(data.restaurant))
-    localStorage.setItem("cart", JSON.stringify(cart))
-    closeModal()
+      setQuantity(0)
+      setDataRestaurant(data.restaurant)
+      localStorage.setItem("restaurant", JSON.stringify(data.restaurant))
+      localStorage.setItem("cart", JSON.stringify(cart))
+      closeModal()
+
+  }else{ 
+    setCart([...cart, { ...prod, quantity: quantity }])
+
   }
+}
 
   const closeModal = () => {
 

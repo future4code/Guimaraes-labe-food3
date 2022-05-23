@@ -25,7 +25,7 @@ const FourFood = () => {
 
     const navigate = useNavigate()
 
-    const [restaurants, loading, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
+    const [restaurants, loading, error, category, setRestaurants, filter, setFilter] = getRestaurant(`${BASE_URL}/restaurants`, []);
     const [input, setInput] = useState("")
 
     const { getActiveOrder } = useContext(GlobalOrderContext)
@@ -34,7 +34,9 @@ const FourFood = () => {
         setInput(ev.target.value)
     }
 
-
+    console.log('categoria fourfood', category)
+    console.log('filtro fourfood', filter)
+    console.log('restaurants fourfood', restaurants)
     const showRestaurant =
         restaurants &&
         restaurants.filter(rest => {
@@ -42,10 +44,10 @@ const FourFood = () => {
         })
             .map((rest, index) => {
                 return (<div  key={index}>
-{/*                     <Filtro
+                   {/*  <Filtro
                     category={category}
                     filter={[filter, setFilter, setRestaurants]}
-                    /> */}
+                    />  */}
                     <Card
                     image={rest.logoUrl}
                     name={rest.name}
